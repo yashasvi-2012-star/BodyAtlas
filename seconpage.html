@@ -1,4 +1,5 @@
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -21,16 +22,16 @@ height:100vh;
 overflow:hidden;
 }
 
-/* ================= HEADER ================= */
+/* HEADER */
 
 header{
 height:70px;
+background:#061224;
+border-bottom:1px solid rgba(0,180,255,.2);
 display:flex;
 align-items:center;
 justify-content:space-between;
 padding:0 25px;
-border-bottom:1px solid rgba(0,180,255,.2);
-background:#061224;
 }
 
 .logo{
@@ -52,8 +53,7 @@ color:#00bfff;
 }
 
 .logo-text h1{
-font-size:32px;
-font-weight:700;
+font-size:30px;
 }
 
 .logo-text span{
@@ -65,26 +65,26 @@ font-size:12px;
 opacity:.7;
 }
 
-/* SEARCH */
-
 .search{
-width:450px;
-max-width:50%;
+width:400px;
 }
 
 .search input{
 width:100%;
-padding:12px 18px;
-border:none;
-outline:none;
-border-radius:12px;
+padding:12px;
 background:#09182d;
-color:white;
-font-size:15px;
 border:1px solid rgba(0,180,255,.2);
+border-radius:12px;
+color:white;
+outline:none;
 }
 
-/* ================= MAIN ================= */
+#clock{
+font-size:14px;
+color:#00bfff;
+}
+
+/* MAIN */
 
 .main{
 display:flex;
@@ -109,9 +109,8 @@ margin-bottom:15px;
 }
 
 .panel h3{
-color:#00bfff;
 margin-bottom:15px;
-font-size:16px;
+color:#00bfff;
 }
 
 .menu-item{
@@ -133,21 +132,176 @@ flex:1;
 display:flex;
 align-items:center;
 justify-content:center;
+overflow:auto;
+}
+
+.body-viewer{
+display:flex;
+gap:60px;
+align-items:center;
+justify-content:center;
+}
+
+.body-container{
 position:relative;
 }
 
-.body-placeholder{
-width:500px;
-height:650px;
-border-radius:25px;
-border:2px dashed rgba(0,180,255,.3);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:24px;
-color:#00bfff;
-background:rgba(0,180,255,.05);
+.body-img{
+height: 640px;
+max-height:80vh;
 }
+
+/* HOTSPOTS */
+
+.hotspot{
+position:absolute;
+width:18px;
+height:18px;
+border-radius:50%;
+background:#00bfff;
+box-shadow:0 0 15px #00bfff;
+cursor:pointer;
+transition:.3s;
+}
+.hotspot{
+width:24px;
+height:24px;
+}
+.hotspot:hover{
+transform:scale(1.3);
+}
+.hotspot{
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+opacity:1;
+}
+
+50%{
+transform:scale(1.3);
+opacity:.7;
+}
+
+100%{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
+.hotspot{
+
+opacity:.4;
+
+}
+
+.hotspot.active{
+
+opacity:1;
+
+animation:none;
+
+transform:scale(1.8);
+
+background:#00ffff;
+
+box-shadow:
+0 0 20px #00ffff,
+0 0 40px #00ffff,
+0 0 60px #00ffff;
+
+z-index:100;
+
+}
+.hotspot.active{
+
+border:3px solid white;
+
+}
+.hotspot.active{
+
+animation:none;
+
+background:#00ffff;
+
+border:2px solid white;
+
+opacity:1;
+
+transform:scale(1.8);
+
+box-shadow:
+0 0 15px #00ffff,
+0 0 30px #00ffff,
+0 0 60px #00ffff,
+0 0 90px #00ffff;
+
+z-index:100;
+
+}
+/* FRONT */
+/* FRONT BODY */
+
+.brain{
+top:10px;
+left:125px;
+}
+
+.heart{
+top:140px;
+left:128px;
+}
+
+.lungs{
+top:145px;
+left:100px;
+}
+.liver{
+top:170px;
+left:110px;
+}
+
+.stomach{
+top:175px;
+left:145px;
+}
+
+.pancreas{
+top:195px;
+left:124px;
+}
+
+.smallIntestine{
+top:225px;
+left:130px;
+}
+
+.largeIntestine{
+top:225px;
+left:110px;
+}
+
+.bladder{
+top:270px;
+left:130px;
+}
+/* BACK BODY */
+
+.spine{
+top:165px;
+left:180px;
+}
+
+.kidneys{
+top:195px;
+left:165px;
+}
+
+
 
 /* INFO PANEL */
 
@@ -160,9 +314,9 @@ overflow:auto;
 
 .organ-card{
 background:#07111f;
+border:1px solid rgba(0,180,255,.2);
 border-radius:18px;
 padding:20px;
-border:1px solid rgba(0,180,255,.2);
 }
 
 .organ-card h2{
@@ -172,31 +326,29 @@ margin-bottom:15px;
 
 .organ-card p{
 line-height:1.6;
-opacity:.85;
 }
 
-/* BOTTOM DOCK */
+/* DOCK */
 
 .bottom-dock{
 height:80px;
+background:#061224;
 border-top:1px solid rgba(0,180,255,.15);
 display:flex;
 align-items:center;
 gap:10px;
 padding:10px;
 overflow-x:auto;
-background:#061224;
 }
 
 .organ-btn{
 min-width:110px;
 height:55px;
-border:none;
-border-radius:14px;
 background:#09182d;
 color:white;
+border:none;
+border-radius:14px;
 cursor:pointer;
-transition:.3s;
 border:1px solid rgba(0,180,255,.2);
 }
 
@@ -204,23 +356,8 @@ border:1px solid rgba(0,180,255,.2);
 background:rgba(0,180,255,.15);
 }
 
-::-webkit-scrollbar{
-width:6px;
-height:6px;
-}
-
-::-webkit-scrollbar-thumb{
-background:#00bfff;
-border-radius:20px;
-}
-
-
-
 </style>
-
-
 </head>
-
 
 <body>
 
@@ -228,9 +365,7 @@ border-radius:20px;
 
 <div class="logo">
 
-<div class="logo-circle">
-🫀
-</div>
+<div class="logo-circle">🫀</div>
 
 <div class="logo-text">
 <h1>Body<span>Atlas</span></h1>
@@ -238,6 +373,8 @@ border-radius:20px;
 </div>
 
 </div>
+
+<div id="clock"></div>
 
 <div class="search">
 <input type="text" placeholder="Search organ, system, disease...">
@@ -250,20 +387,6 @@ border-radius:20px;
 <!-- SIDEBAR -->
 
 <div class="sidebar">
-<div class="panel">
-
-<h3>BODY SYSTEMS</h3>
-
-<div class="menu-item">🦴 Skeletal System</div>
-<div class="menu-item">💪 Muscular System</div>
-<div class="menu-item">🧠 Nervous System</div>
-<div class="menu-item">❤️ Circulatory System</div>
-<div class="menu-item">🫁 Respiratory System</div>
-<div class="menu-item">🍽 Digestive System</div>
-<div class="menu-item">🧪 Endocrine System</div>
-<div class="menu-item">🚽 Urinary System</div>
-
-</div>
 
 <div class="panel">
 
@@ -277,25 +400,109 @@ border-radius:20px;
 <div class="menu-item">Quiz System</div>
 
 </div>
+<div class="panel">
+
+<h3>BODY SYSTEMS</h3>
+
+<div class="menu-item"
+onclick="showSystem('skeleton')">
+🦴 Skeletal System</div>
+
+<div class="menu-item"
+onclick="showSystem('muscular')">
+💪 Muscular System
+</div>
+
+<div class="menu-item"
+onclick="showSystem('nervous')">
+🧠 Nervous System
+</div>
+
+<div class="menu-item"
+onclick="showSystem('circulatory')">
+❤️ Circulatory System
+</div>
+
+<div class="menu-item"
+onclick="showSystem('respiratory')">
+🫁 Respiratory System
+</div>
+
+<div class="menu-item"
+onclick="showSystem('digestive')">
+🍽 Digestive System
+</div>
+
+<div class="menu-item"
+onclick="showSystem('endocrine')">
+🧪 Endocrine Systemm
+</div>
+
+<div class="menu-item"
+onclick="showSystem('urinary')">
+🚽 Urinary System
+</div>
+
 
 </div>
-<! panel viewer -->
+
+</div>
+
+<!-- VIEWER -->
 
 <div class="viewer">
-    <div id="viewer3d" style="width:100%;height:100%;"></div>
+
+<div class="body-viewer">
+
+<div class="body-container">
+
+<img src="frontview copy.png" class="body-img">
+
+<div class="hotspot brain" onclick="showOrgan('brain')"></div>
+<div class="hotspot heart" onclick="showOrgan('heart')"></div>
+<div class="hotspot lungs" onclick="showOrgan('lungs')"></div>
+<div class="hotspot liver"
+onclick="showOrgan('liver')"></div>
+
+<div class="hotspot stomach"
+onclick="showOrgan('stomach')"></div>
+
+<div class="hotspot pancreas"
+onclick="showOrgan('pancreas')"></div>
+
+<div class="hotspot smallIntestine"
+onclick="showOrgan('smallIntestine')"></div>
+
+<div class="hotspot largeIntestine"
+onclick="showOrgan('largeIntestine')"></div>
+
+<div class="hotspot bladder"
+onclick="showOrgan('bladder')"></div>
+
 </div>
+
+<div class="body-container">
+
+<img src="ChatGPT Image Jun 22, 2026, 11_40_49 AM.png" class="body-img">
+
+<div class="hotspot kidneys" onclick="showOrgan('kidneys')"></div>
+<div class="hotspot spine" onclick="showOrgan('spine')"></div>
+</div>
+
+</div>
+
+</div>
+
 <!-- INFO PANEL -->
 
 <div class="info-panel">
 
-<div class="organ-card">
+<div class="organ-card" id="infoCard">
 
 <h2>WELCOME TO BODYATLAS</h2>
 
 <p>
-This panel will display organ information,
-disease information, medicine journeys,
-healthy vs disease comparisons, and much more.
+Select an organ hotspot to begin exploring.
 </p>
 
 </div>
@@ -304,7 +511,7 @@ healthy vs disease comparisons, and much more.
 
 </div>
 
-<!-- BOTTOM DOCK -->
+<!-- DOCK -->
 
 <div class="bottom-dock">
 
@@ -315,78 +522,776 @@ healthy vs disease comparisons, and much more.
 <button class="organ-btn">🍽 Stomach</button>
 <button class="organ-btn">🫘 Kidneys</button>
 <button class="organ-btn">🧪 Pancreas</button>
-<button class="organ-btn">🩸 Blood</button>
 
 </div>
-<script type="module">
 
-import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+<script>
 
-const container =
-document.getElementById("viewer3d");
+const organs = {
 
-const scene = new THREE.Scene();
+brain:{
 
-const camera =
-new THREE.PerspectiveCamera(
-75,
-container.clientWidth /
-container.clientHeight,
-0.1,
-1000
-);
+name:"brain",
 
-const renderer =
-new THREE.WebGLRenderer({
-antialias:true
-});
+system:"Nervous System",
 
-renderer.setSize(
-container.clientWidth,
-container.clientHeight
-);
+location:"Inside the skull (cranium)",
 
-container.appendChild(
-renderer.domElement
-);
+function:"Controls thoughts, memory, emotions, movement, senses and vital body functions.",
 
-const geometry =
-new THREE.BoxGeometry();
+funFact:"Contains approximately 86 billion neurons.",
 
-const material =
-new THREE.MeshBasicMaterial({
-color:0x00bfff,
-wireframe:true
-});
+size:"About 15 cm long",
 
-const cube =
-new THREE.Mesh(
-geometry,
-material
-);
+weight:"1.3–1.4 kg",
 
-scene.add(cube);
+highlightColor:"#FFD700",
 
-camera.position.z = 3;
+diseases:[
+"Alzheimer's Disease",
+"Parkinson's Disease",
+"Stroke",
+"Epilepsy"
+],
 
-function animate(){
+symptoms:[
+"Memory loss",
+"Headaches",
+"Seizures",
+"Confusion"
+],
 
-requestAnimationFrame(
-animate
-);
+treatments:[
+"Medications",
+"Surgery",
+"Rehabilitation"
+]
 
-cube.rotation.x += 0.01;
-cube.rotation.y += 0.01;
+},
 
-renderer.render(
-scene,
-camera
-);
+heart:{
+
+name:"heart",
+
+system:"Circulatory System",
+
+location:"Center of the chest between the lungs, slightly left",
+
+function:"Pumps blood throughout the body, delivering oxygen and nutrients.",
+
+funFact:"The heart beats about 100,000 times every day.",
+
+size:"About the size of a clenched fist",
+
+weight:"250–350 grams",
+
+highlightColor:"#FF4444",
+
+diseases:[
+"Coronary Artery Disease",
+"Heart Attack",
+"Heart Failure",
+"Arrhythmia",
+"Cardiomyopathy"
+],
+
+symptoms:[
+"Chest pain",
+"Shortness of breath",
+"Palpitations",
+"Fatigue",
+"Dizziness"
+],
+
+treatments:[
+"Medications",
+"Angioplasty",
+"Bypass surgery",
+"Pacemaker",
+"Lifestyle changes"
+],
+
+healthyVsDisease:{
+healthy:[
+"Normal heartbeat",
+"Efficient circulation",
+"Good stamina"
+],
+diseased:[
+"Chest pain",
+"Weak pumping",
+"Irregular rhythm"
+]
+},
+
+medicines:[
+"Aspirin",
+"Beta Blockers",
+"ACE Inhibitors",
+"Statins"
+],
+
+bloodSupply:"Coronary Arteries",
+
+nerves:"Cardiac Plexus",
+
+statistics:[
+"Beats about 3 billion times in a lifetime"
+],
+
+bodyJourneys:[
+"Blood Circulation Journey",
+"Oxygen Delivery Journey"
+],
+
+diseaseExplorers:[
+"Heart Attack Explorer",
+"Heart Failure Explorer"
+]
+
+},
+lungs:{
+
+name:"lungs",
+
+system:"Respiratory System",
+
+location:"Chest cavity",
+
+function:"Exchange oxygen and carbon dioxide.",
+
+funFact:"The lungs contain about 300 million alveoli.",
+
+size:"Right lung slightly larger than left",
+
+weight:"Around 1.3 kg combined",
+
+highlightColor:"#00FFFF",
+
+diseases:[
+"Asthma",
+"Pneumonia",
+"COPD",
+"Lung Cancer",
+"Tuberculosis"
+],
+
+symptoms:[
+"Cough",
+"Shortness of breath",
+"Wheezing",
+"Chest tightness"
+],
+
+treatments:[
+"Inhalers",
+"Antibiotics",
+"Oxygen therapy",
+"Surgery"
+],
+
+healthyVsDisease:{
+healthy:[
+"Easy breathing",
+"Normal oxygen levels"
+],
+diseased:[
+"Breathing difficulty",
+"Reduced oxygen intake"
+]
+},
+
+medicines:[
+"Albuterol",
+"Steroids",
+"Antibiotics"
+],
+
+bloodSupply:"Pulmonary Arteries and Veins",
+
+nerves:"Pulmonary Plexus",
+
+statistics:[
+"Average person breathes 20,000 times per day"
+],
+
+bodyJourneys:[
+"Oxygen Journey",
+"Breathing Journey"
+],
+
+diseaseExplorers:[
+"Asthma Explorer",
+"Lung Cancer Explorer"
+]
+
+}
+,
+liver:{
+
+name:"liver",
+
+system:"Digestive System",
+
+location:"Upper right abdomen",
+
+function:"Filters blood, removes toxins, produces bile and stores nutrients.",
+
+funFact:"The liver can regenerate itself.",
+
+size:"Largest internal organ",
+
+weight:"About 1.5 kg",
+
+highlightColor:"#FF9900",
+
+diseases:[
+"Hepatitis",
+"Fatty Liver Disease",
+"Cirrhosis",
+"Liver Cancer"
+],
+
+symptoms:[
+"Jaundice",
+"Fatigue",
+"Nausea",
+"Abdominal pain"
+],
+
+treatments:[
+"Medications",
+"Lifestyle changes",
+"Liver transplant"
+],
+
+healthyVsDisease:{
+healthy:[
+"Efficient detoxification",
+"Normal digestion"
+],
+diseased:[
+"Jaundice",
+"Poor detoxification"
+]
+},
+
+medicines:[
+"Antivirals",
+"Lactulose"
+],
+
+bloodSupply:"Hepatic Artery and Portal Vein",
+
+nerves:"Hepatic Plexus",
+
+statistics:[
+"Performs over 500 functions"
+],
+
+bodyJourneys:[
+"Detoxification Journey",
+"Nutrient Storage Journey"
+],
+
+diseaseExplorers:[
+"Hepatitis Explorer",
+"Cirrhosis Explorer"
+]
+
+}
+,
+stomach:{
+
+name:"stomach",
+
+system:"Digestive System",
+
+location:"Upper left abdomen",
+
+function:"Breaks down food using acid and enzymes.",
+
+funFact:"The stomach lining replaces itself every few days.",
+
+size:"Can hold about 1 liter",
+
+weight:"About 150 grams empty",
+
+highlightColor:"#FF66CC",
+
+diseases:[
+"Gastritis",
+"Ulcers",
+"Stomach Cancer",
+"GERD"
+],
+
+symptoms:[
+"Heartburn",
+"Nausea",
+"Vomiting",
+"Abdominal pain"
+],
+
+treatments:[
+"Antacids",
+"Antibiotics",
+"Diet changes"
+],
+
+healthyVsDisease:{
+healthy:[
+"Efficient digestion"
+],
+diseased:[
+"Pain",
+"Acid reflux"
+]
+},
+
+medicines:[
+"Omeprazole",
+"Pantoprazole"
+],
+
+bloodSupply:"Gastric Arteries",
+
+nerves:"Vagus Nerve",
+
+statistics:[
+"Produces about 2 liters of gastric juice daily"
+],
+
+bodyJourneys:[
+"Food Digestion Journey"
+],
+
+diseaseExplorers:[
+"Ulcer Explorer",
+"GERD Explorer"
+]
+
+},
+
+smallIntestine:{
+
+name:"smallIntestine",
+
+system:"Digestive System",
+
+location:"Abdominal cavity",
+
+function:"Absorbs nutrients from food.",
+
+funFact:"The small intestine is about 6 meters long.",
+
+size:"Approximately 6 meters",
+
+weight:"Around 600 grams",
+
+highlightColor:"#00FF99",
+
+diseases:[
+"Celiac Disease",
+"Crohn's Disease",
+"Intestinal Obstruction"
+],
+
+symptoms:[
+"Diarrhea",
+"Abdominal pain",
+"Weight loss"
+],
+
+treatments:[
+"Diet Changes",
+"Medications",
+"Surgery"
+]
+
+},
+
+largeIntestine:{
+
+name:"largeIntestine",
+
+system:"Digestive System",
+
+location:"Surrounds the small intestine",
+
+function:"Absorbs water and forms stool.",
+
+funFact:"Contains trillions of beneficial bacteria.",
+
+size:"Approximately 1.5 meters",
+
+weight:"About 1 kg",
+
+highlightColor:"#00CC66",
+
+diseases:[
+"Ulcerative Colitis",
+"Colon Cancer",
+"Diverticulitis"
+],
+
+symptoms:[
+"Abdominal pain",
+"Constipation",
+"Rectal bleeding"
+],
+
+treatments:[
+"Medications",
+"Surgery",
+"Diet Changes"
+]
+
+},
+bladder:{
+
+name:"bladder",
+
+system:"Urinary System",
+
+location:"Pelvic cavity",
+
+function:"Stores urine before excretion.",
+
+funFact:"A healthy bladder can hold about 400–600 mL of urine.",
+
+size:"Varies depending on fullness",
+
+weight:"Approximately 50 grams empty",
+
+highlightColor:"#66CCFF",
+
+diseases:[
+"Urinary Tract Infection",
+"Bladder Cancer",
+"Incontinence"
+],
+
+symptoms:[
+"Painful urination",
+"Frequent urination",
+"Blood in urine"
+],
+
+treatments:[
+"Antibiotics",
+"Surgery",
+"Bladder Training"
+]
+
+},
+
+pancreas:{
+
+name:"pancreas",
+
+system:"Digestive and Endocrine System",
+
+location:"Behind the stomach",
+
+function:"Produces insulin and digestive enzymes.",
+
+funFact:"The pancreas helps regulate blood sugar levels.",
+
+size:"15–20 cm long",
+
+weight:"70–100 grams",
+
+highlightColor:"#FFAA00",
+
+diseases:[
+"Diabetes",
+"Pancreatitis",
+"Pancreatic Cancer"
+],
+
+symptoms:[
+"Abdominal pain",
+"Weight loss",
+"High blood sugar"
+],
+
+treatments:[
+"Insulin Therapy",
+"Medications",
+"Surgery"
+]
+
+},
+
+bloodVessels:{
+
+name:"bloodVessels",
+
+system:"Circulatory System",
+
+location:"Throughout the entire body",
+
+function:"Transport blood, oxygen and nutrients.",
+
+funFact:"If laid end to end, human blood vessels could circle Earth more than twice.",
+
+size:"Approximately 100,000 km total length",
+
+weight:"Varies",
+
+highlightColor:"#FF0000",
+
+diseases:[
+"Atherosclerosis",
+"Aneurysm",
+"Hypertension"
+],
+
+symptoms:[
+"Chest pain",
+"Poor circulation",
+"High blood pressure"
+],
+
+treatments:[
+"Lifestyle Changes",
+"Medications",
+"Surgery"
+]
+
+},
+kidneys:{
+
+name:"kidneys",
+
+system:"Urinary System",
+
+location:"Back of the abdomen on either side of the spine",
+
+function:"Filter blood and produce urine.",
+
+funFact:"Kidneys filter about 180 liters of fluid every day.",
+
+size:"About 11 cm long",
+
+weight:"150 grams each",
+
+highlightColor:"#AA66FF",
+
+diseases:[
+"Kidney Stones",
+"Kidney Failure",
+"Polycystic Kidney Disease"
+],
+
+symptoms:[
+"Back pain",
+"Swelling",
+"Fatigue",
+"Blood in urine"
+],
+
+treatments:[
+"Dialysis",
+"Surgery",
+"Medications"
+],
+
+healthyVsDisease:{
+healthy:[
+"Normal waste removal"
+],
+diseased:[
+"Fluid buildup",
+"Toxin accumulation"
+]
+},
+
+medicines:[
+"Diuretics",
+"ACE Inhibitors"
+],
+
+bloodSupply:"Renal Arteries",
+
+nerves:"Renal Plexus",
+
+statistics:[
+"Filter around 50 gallons of blood daily"
+],
+
+bodyJourneys:[
+"Urine Formation Journey"
+],
+
+diseaseExplorers:[
+"Kidney Stone Explorer",
+"Kidney Failure Explorer"
+]
+
+},
+
+spine:{
+
+name:"spinalcord",
+
+system:"Nervous System",
+
+location:"Inside the vertebral column",
+
+function:"Carries signals between the brain and the body.",
+
+funFact:"The spinal cord is part of the central nervous system.",
+
+size:"About 45 cm long",
+
+weight:"Approximately 35 grams",
+
+highlightColor:"#AA66FF",
+
+diseases:[
+"Spinal Cord Injury",
+"Multiple Sclerosis",
+"Spinal Tumors"
+],
+
+symptoms:[
+"Pain",
+"Numbness",
+"Weakness",
+"Paralysis"
+],
+treatments:[
+"Physical Therapy",
+"Surgery",
+"Medications"
+]
 
 }
 
-animate();
+};
 
+let selectedHotspot = null;
+
+function showOrgan(name){
+
+const organ = organs[name];
+
+if(!organ){
+console.error("Organ not found:", name);
+return;
+}
+
+document.getElementById("infoCard").innerHTML = `
+
+<h2>${organ.name}</h2>
+
+<p><b>System:</b> ${organ.system}</p>
+
+<p><b>Location:</b> ${organ.location}</p>
+
+<p><b>Function:</b> ${organ.function}</p>
+
+<p><b>Fun Fact:</b> ${organ.funFact}</p>
+
+<p><b>Size:</b> ${organ.size}</p>
+
+<p><b>Weight:</b> ${organ.weight}</p>
+
+`;
+
+if(selectedHotspot){
+selectedHotspot.classList.remove("active");
+}
+
+const hotspot =
+document.querySelector("." + name);
+
+if(hotspot){
+
+hotspot.classList.add("active");
+
+selectedHotspot = hotspot;
+
+}
+
+}
+
+function updateClock(){
+
+document.getElementById("clock").innerText =
+new Date().toLocaleString();
+
+}
+
+updateClock();
+
+setInterval(updateClock,1000);
+
+const systems = {
+
+nervous:[
+"brain",
+"spine"
+],
+
+circulatory:[
+"heart",
+"bloodVessels"
+],
+
+respiratory:[
+"lungs"
+],
+
+digestive:[
+"liver",
+"stomach",
+"pancreas",
+"smallIntestine",
+"largeIntestine"
+],
+
+urinary:[
+"kidneys",
+"bladder"
+],
+skeleton:[],
+muscular:[],
+endocrine:[]
+
+};
+
+function showSystem(system){
+
+if(!systems[system]) return;
+
+document
+.querySelectorAll(".hotspot")
+.forEach(h=>{
+
+h.classList.remove("active");
+
+});
+
+systems[system].forEach(name=>{
+
+const hotspot =
+document.querySelector("." + name);
+
+if(hotspot){
+
+hotspot.classList.add("active");
+
+}
+
+});
+
+}
 </script>
+
 </body>
+
 </html>
+
