@@ -1,0 +1,392 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BodyAtlas</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#030814;
+color:white;
+height:100vh;
+overflow:hidden;
+}
+
+/* ================= HEADER ================= */
+
+header{
+height:70px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 25px;
+border-bottom:1px solid rgba(0,180,255,.2);
+background:#061224;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo-circle{
+width:45px;
+height:45px;
+border-radius:50%;
+border:2px solid #00bfff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+color:#00bfff;
+}
+
+.logo-text h1{
+font-size:32px;
+font-weight:700;
+}
+
+.logo-text span{
+color:#00bfff;
+}
+
+.logo-text p{
+font-size:12px;
+opacity:.7;
+}
+
+/* SEARCH */
+
+.search{
+width:450px;
+max-width:50%;
+}
+
+.search input{
+width:100%;
+padding:12px 18px;
+border:none;
+outline:none;
+border-radius:12px;
+background:#09182d;
+color:white;
+font-size:15px;
+border:1px solid rgba(0,180,255,.2);
+}
+
+/* ================= MAIN ================= */
+
+.main{
+display:flex;
+height:calc(100vh - 150px);
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:280px;
+padding:15px;
+border-right:1px solid rgba(0,180,255,.15);
+overflow:auto;
+}
+
+.panel{
+background:#07111f;
+border:1px solid rgba(0,180,255,.2);
+border-radius:18px;
+padding:15px;
+margin-bottom:15px;
+}
+
+.panel h3{
+color:#00bfff;
+margin-bottom:15px;
+font-size:16px;
+}
+
+.menu-item{
+padding:12px;
+border-radius:12px;
+cursor:pointer;
+margin-bottom:8px;
+transition:.3s;
+}
+
+.menu-item:hover{
+background:rgba(0,180,255,.12);
+}
+
+/* VIEWER */
+
+.viewer{
+flex:1;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+}
+
+.body-placeholder{
+width:500px;
+height:650px;
+border-radius:25px;
+border:2px dashed rgba(0,180,255,.3);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+color:#00bfff;
+background:rgba(0,180,255,.05);
+}
+
+/* INFO PANEL */
+
+.info-panel{
+width:340px;
+padding:15px;
+border-left:1px solid rgba(0,180,255,.15);
+overflow:auto;
+}
+
+.organ-card{
+background:#07111f;
+border-radius:18px;
+padding:20px;
+border:1px solid rgba(0,180,255,.2);
+}
+
+.organ-card h2{
+color:#00bfff;
+margin-bottom:15px;
+}
+
+.organ-card p{
+line-height:1.6;
+opacity:.85;
+}
+
+/* BOTTOM DOCK */
+
+.bottom-dock{
+height:80px;
+border-top:1px solid rgba(0,180,255,.15);
+display:flex;
+align-items:center;
+gap:10px;
+padding:10px;
+overflow-x:auto;
+background:#061224;
+}
+
+.organ-btn{
+min-width:110px;
+height:55px;
+border:none;
+border-radius:14px;
+background:#09182d;
+color:white;
+cursor:pointer;
+transition:.3s;
+border:1px solid rgba(0,180,255,.2);
+}
+
+.organ-btn:hover{
+background:rgba(0,180,255,.15);
+}
+
+::-webkit-scrollbar{
+width:6px;
+height:6px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#00bfff;
+border-radius:20px;
+}
+
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+<header>
+
+<div class="logo">
+
+<div class="logo-circle">
+🫀
+</div>
+
+<div class="logo-text">
+<h1>Body<span>Atlas</span></h1>
+<p>Explore. Learn. Understand.</p>
+</div>
+
+</div>
+
+<div class="search">
+<input type="text" placeholder="Search organ, system, disease...">
+</div>
+
+</header>
+
+<div class="main">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+<div class="panel">
+
+<h3>BODY SYSTEMS</h3>
+
+<div class="menu-item">🦴 Skeletal System</div>
+<div class="menu-item">💪 Muscular System</div>
+<div class="menu-item">🧠 Nervous System</div>
+<div class="menu-item">❤️ Circulatory System</div>
+<div class="menu-item">🫁 Respiratory System</div>
+<div class="menu-item">🍽 Digestive System</div>
+<div class="menu-item">🧪 Endocrine System</div>
+<div class="menu-item">🚽 Urinary System</div>
+
+</div>
+
+<div class="panel">
+
+<h3>QUICK ACCESS</h3>
+
+<div class="menu-item">All Organs</div>
+<div class="menu-item">Healthy vs Disease</div>
+<div class="menu-item">Disease Explorer</div>
+<div class="menu-item">Medicine Journey</div>
+<div class="menu-item">Body Journeys</div>
+<div class="menu-item">Quiz System</div>
+
+</div>
+
+</div>
+<! panel viewer -->
+
+<div class="viewer">
+    <div id="viewer3d" style="width:100%;height:100%;"></div>
+</div>
+<!-- INFO PANEL -->
+
+<div class="info-panel">
+
+<div class="organ-card">
+
+<h2>WELCOME TO BODYATLAS</h2>
+
+<p>
+This panel will display organ information,
+disease information, medicine journeys,
+healthy vs disease comparisons, and much more.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- BOTTOM DOCK -->
+
+<div class="bottom-dock">
+
+<button class="organ-btn">🧠 Brain</button>
+<button class="organ-btn">❤️ Heart</button>
+<button class="organ-btn">🫁 Lungs</button>
+<button class="organ-btn">🟤 Liver</button>
+<button class="organ-btn">🍽 Stomach</button>
+<button class="organ-btn">🫘 Kidneys</button>
+<button class="organ-btn">🧪 Pancreas</button>
+<button class="organ-btn">🩸 Blood</button>
+
+</div>
+<script type="module">
+
+import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+
+const container =
+document.getElementById("viewer3d");
+
+const scene = new THREE.Scene();
+
+const camera =
+new THREE.PerspectiveCamera(
+75,
+container.clientWidth /
+container.clientHeight,
+0.1,
+1000
+);
+
+const renderer =
+new THREE.WebGLRenderer({
+antialias:true
+});
+
+renderer.setSize(
+container.clientWidth,
+container.clientHeight
+);
+
+container.appendChild(
+renderer.domElement
+);
+
+const geometry =
+new THREE.BoxGeometry();
+
+const material =
+new THREE.MeshBasicMaterial({
+color:0x00bfff,
+wireframe:true
+});
+
+const cube =
+new THREE.Mesh(
+geometry,
+material
+);
+
+scene.add(cube);
+
+camera.position.z = 3;
+
+function animate(){
+
+requestAnimationFrame(
+animate
+);
+
+cube.rotation.x += 0.01;
+cube.rotation.y += 0.01;
+
+renderer.render(
+scene,
+camera
+);
+
+}
+
+animate();
+
+</script>
+</body>
+</html>

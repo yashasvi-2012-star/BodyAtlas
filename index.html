@@ -1,1 +1,296 @@
-this is BodyAtlas 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BodyAtlas</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#050816;
+color:white;
+overflow-x:hidden;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+background:
+linear-gradient(
+rgba(5,8,22,.75),
+rgba(5,8,22,.92)
+),
+url('bg2.jpg');
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+display:flex;
+flex-direction:column;
+}
+
+/* HEADER */
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:60px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+gap:35px;
+
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(15px);
+
+border-bottom:1px solid rgba(255,255,255,.1);
+
+z-index:1000;
+font-size:.95rem;
+}
+
+/* HERO CONTENT */
+
+.hero-content{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:120px 20px 40px;
+}
+
+.hero-inner{
+max-width:900px;
+}
+
+.hero h1{
+font-size:6rem;
+margin-bottom:20px;
+
+background:
+linear-gradient(
+to right,
+#00c8ff,
+#7c4dff
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero h2{
+font-size:2rem;
+font-weight:300;
+margin-bottom:25px;
+}
+
+.hero p{
+font-size:1.1rem;
+line-height:1.8;
+color:#d0d0d0;
+max-width:800px;
+margin:auto;
+}
+
+.enter-btn{
+margin-top:35px;
+padding:15px 35px;
+font-size:1rem;
+
+border:none;
+border-radius:50px;
+
+background:#00c8ff;
+color:black;
+
+font-weight:700;
+cursor:pointer;
+
+transition:.3s;
+}
+
+.enter-btn:hover{
+transform:translateY(-3px);
+box-shadow:0 0 25px rgba(0,200,255,.5);
+}
+
+/* ABOUT */
+
+.about{
+padding:100px 10%;
+text-align:center;
+background:#071024;
+}
+
+.about h2{
+font-size:3rem;
+margin-bottom:30px;
+color:#00c8ff;
+}
+
+.about p{
+max-width:900px;
+margin:auto;
+
+font-size:1.1rem;
+line-height:2;
+color:#d0d0d0;
+}
+
+/* FOOTER */
+
+footer{
+padding:30px;
+text-align:center;
+background:#03050d;
+border-top:1px solid rgba(255,255,255,.1);
+}
+
+footer p{
+color:#aaa;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+header{
+gap:12px;
+font-size:.75rem;
+padding:0 10px;
+}
+
+.hero h1{
+font-size:3.5rem;
+}
+
+.hero h2{
+font-size:1.3rem;
+}
+
+.about h2{
+font-size:2rem;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="hero">
+
+<header>
+
+<div id="weather">☁ Weather</div>
+
+<div id="date">📅 Date</div>
+
+<div id="day">📆 Day</div>
+
+<div id="time">🕒 Time</div>
+
+</header>
+
+<div class="hero-content">
+
+<div class="hero-inner">
+
+<h1>BODYATLAS</h1>
+
+<h2>
+Explore the Human Body Like Never Before
+</h2>
+
+<p>
+An immersive anatomy platform for exploring,
+understanding, and discovering the human body.
+</p>
+
+<button class="enter-btn"
+onclick="location.href='seconpage.html'">
+🚀 Enter BodyAtlas
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<section class="about">
+
+<h2>About BodyAtlas</h2>
+
+<p>
+BodyAtlas is an interactive medical visualization
+platform designed to help students, educators,
+healthcare professionals, and curious minds explore
+the human body in ways traditional textbooks cannot.
+
+From anatomy exploration to disease simulations and
+medicine pathways, BodyAtlas transforms complex
+biological systems into immersive and engaging
+experiences.
+</p>
+
+</section>
+
+<footer>
+
+<p>
+© 2026 BodyAtlas • Building the Future of Human Anatomy Education
+</p>
+
+</footer>
+
+<script>
+
+function updateDateTime(){
+
+const now = new Date();
+
+const days = [
+"Sunday",
+"Monday",
+"Tuesday",
+"Wednesday",
+"Thursday",
+"Friday",
+"Saturday"
+];
+
+document.getElementById("date").innerHTML =
+"📅 " + now.toLocaleDateString();
+
+document.getElementById("day").innerHTML =
+"📆 " + days[now.getDay()];
+
+document.getElementById("time").innerHTML =
+"🕒 " + now.toLocaleTimeString();
+
+}
+
+setInterval(updateDateTime,1000);
+updateDateTime();
+
+</script>
+
+</body>
+</html>
+```
