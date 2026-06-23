@@ -164,8 +164,8 @@ cursor:pointer;
 transition:.3s;
 }
 .hotspot{
-width:24px;
-height:24px;
+width:16px;
+height:16px;
 }
 .hotspot:hover{
 transform:scale(1.3);
@@ -205,7 +205,7 @@ opacity:1;
 
 animation:none;
 
-transform:scale(1.8);
+transform:scale(1.4);
 
 background:#00ffff;
 
@@ -289,6 +289,30 @@ left:110px;
 top:270px;
 left:130px;
 }
+
+.thyroid{
+top:75px;
+left:125px;
+}
+
+.trachea{
+top:95px;
+left:125px;
+}
+
+.esophagus{
+top:115px;
+left:130px;
+}
+
+.bloodvessels{
+top:195px;
+left:140px;
+}
+.pituitary{
+top:20px;
+left:125px;
+}
 /* BACK BODY */
 
 .spine{
@@ -301,6 +325,10 @@ top:195px;
 left:165px;
 }
 
+.adrenalGlands{
+top:175px;
+left:165px;
+}
 
 
 /* INFO PANEL */
@@ -309,7 +337,15 @@ left:165px;
 width:340px;
 padding:15px;
 border-left:1px solid rgba(0,180,255,.15);
-overflow:auto;
+
+overflow-y:auto;
+overflow-x:hidden;
+
+height:100%;
+}
+
+.info-panel{
+min-height:0;
 }
 
 .organ-card{
@@ -326,6 +362,15 @@ margin-bottom:15px;
 
 .organ-card p{
 line-height:1.6;
+}
+
+.organ-card{
+background:#07111f;
+border:1px solid rgba(0,180,255,.2);
+border-radius:18px;
+padding:20px;
+
+min-height:100%;
 }
 
 /* DOCK */
@@ -479,6 +524,20 @@ onclick="showOrgan('largeIntestine')"></div>
 <div class="hotspot bladder"
 onclick="showOrgan('bladder')"></div>
 
+<div class="hotspot bloodvessels"
+onclick="showOrgan('bloodVessels')"></div>
+
+<div class="hotspot pituitary"
+onclick="showOrgan('pituitary')"></div>
+
+<div class="hotspot thyroid"
+onclick="showOrgan('thyroid')"></div>
+
+<div class="hotspot trachea"
+onclick="showOrgan('trachea')"></div>
+
+<div class="hotspot esophagus"
+onclick="showOrgan('esophagus')"></div>
 </div>
 
 <div class="body-container">
@@ -487,6 +546,8 @@ onclick="showOrgan('bladder')"></div>
 
 <div class="hotspot kidneys" onclick="showOrgan('kidneys')"></div>
 <div class="hotspot spine" onclick="showOrgan('spine')"></div>
+<div class="hotspot adrenalGlands"
+onclick="showOrgan('adrenalGlands')"></div>
 </div>
 
 </div>
@@ -515,13 +576,26 @@ Select an organ hotspot to begin exploring.
 
 <div class="bottom-dock">
 
-<button class="organ-btn">🧠 Brain</button>
-<button class="organ-btn">❤️ Heart</button>
-<button class="organ-btn">🫁 Lungs</button>
-<button class="organ-btn">🟤 Liver</button>
-<button class="organ-btn">🍽 Stomach</button>
-<button class="organ-btn">🫘 Kidneys</button>
-<button class="organ-btn">🧪 Pancreas</button>
+<button class="organ-btn" onclick="showOrgan('brain')">🧠 Brain</button>
+<button class="organ-btn" onclick="showOrgan('heart')">❤️ Heart</button>
+<button class="organ-btn" onclick="showOrgan('lungs')">🫁 Lungs</button>
+<button class="organ-btn" onclick="showOrgan('liver')">🟤 Liver</button>
+<button class="organ-btn" onclick="showOrgan('stomach')">🍽 Stomach</button>
+<button class="organ-btn" onclick="showOrgan('kidneys')">🫘 Kidneys</button>
+<button class="organ-btn" onclick="showOrgan('pancreas')">🧪 Pancreas</button>
+<button class="organ-btn" onclick="showOrgan('bloodVessels')">🩸 Blood Vessels</button>
+<button class="organ-btn"
+onclick="showOrgan('thyroid')">🦋 Thyroid</button>
+
+<button class="organ-btn"
+onclick="showOrgan('pituitary')">
+🧠 Pituitary
+</button>
+
+<button class="organ-btn"
+onclick="showOrgan('adrenalGlands')">
+⚡ Adrenals
+</button>
 
 </div>
 
@@ -531,19 +605,19 @@ const organs = {
 
 brain:{
 
-name:"brain",
+name:"Brain",
 
 system:"Nervous System",
 
-location:"Inside the skull (cranium)",
+location:"Inside the skull (cranium), protected by the skull and meninges",
 
-function:"Controls thoughts, memory, emotions, movement, senses and vital body functions.",
+function:"Controls thoughts, memory, emotions, movement, senses, speech, breathing, heartbeat and body coordination.",
 
-funFact:"Contains approximately 86 billion neurons.",
+funFact:"The brain contains approximately 86 billion neurons and can generate enough electrical activity to power a small light bulb.",
 
-size:"About 15 cm long",
+size:"About 15 cm (6 inches) long",
 
-weight:"1.3–1.4 kg",
+weight:"Approximately 1.3–1.4 kg (3 pounds) in adults",
 
 highlightColor:"#FFD700",
 
@@ -551,20 +625,123 @@ diseases:[
 "Alzheimer's Disease",
 "Parkinson's Disease",
 "Stroke",
-"Epilepsy"
+"Brain Tumor",
+"Epilepsy",
+"Meningitis",
+"Multiple Sclerosis"
 ],
 
 symptoms:[
-"Memory loss",
 "Headaches",
+"Memory loss",
 "Seizures",
-"Confusion"
+"Dizziness",
+"Weakness",
+"Confusion",
+"Speech difficulties",
+"Vision problems"
 ],
 
 treatments:[
 "Medications",
 "Surgery",
-"Rehabilitation"
+"Rehabilitation Therapy",
+"Radiation Therapy",
+"Lifestyle Changes",
+"Cognitive Therapy"
+],
+
+healthyVsDisease:{
+
+healthy:[
+"Good memory",
+"Clear thinking",
+"Normal movement",
+"Balanced emotions",
+"Healthy sensory processing"
+],
+
+diseased:[
+"Memory decline",
+"Seizures",
+"Movement problems",
+"Confusion",
+"Personality changes"
+]
+
+},
+
+medicines:[
+"Aspirin",
+"Levodopa",
+"Donepezil",
+"Antiepileptic Drugs",
+"Antidepressants",
+"Antipsychotics"
+],
+
+bloodSupply:"Internal Carotid Arteries and Vertebral Arteries forming the Circle of Willis",
+
+nerves:"Connected to the body through the Spinal Cord and 12 Cranial Nerves",
+
+statistics:[
+"Contains approximately 86 billion neurons",
+"Uses about 20% of the body's oxygen",
+"Uses about 20% of the body's energy",
+"Represents only about 2% of body weight",
+"Processes information faster than many computers"
+],
+
+bodyJourneys:[
+"Thought Formation Journey",
+"Memory Creation Journey",
+"Visual Processing Journey",
+"Motor Command Journey"
+],
+
+diseaseExplorers:[
+"Alzheimer's Explorer",
+"Stroke Explorer",
+"Parkinson's Explorer",
+"Brain Tumor Explorer",
+"Epilepsy Explorer"
+],
+
+quiz:[
+
+{
+question:"Approximately how many neurons are in the human brain?",
+options:[
+"8 Million",
+"86 Billion",
+"860 Thousand",
+"1 Billion"
+],
+answer:1
+},
+
+{
+question:"Which system does the brain belong to?",
+options:[
+"Digestive System",
+"Circulatory System",
+"Nervous System",
+"Respiratory System"
+],
+answer:2
+},
+
+{
+question:"What percentage of the body's energy does the brain use?",
+options:[
+"2%",
+"5%",
+"10%",
+"20%"
+],
+answer:3
+}
+
 ]
 
 },
@@ -986,190 +1163,828 @@ treatments:[
 
 },
 
-pancreas:{
+pituitary:{
+name:"Pituitary Gland",
 
-name:"pancreas",
+system:"Endocrine System",
 
-system:"Digestive and Endocrine System",
+location:"Located at the base of the brain beneath the hypothalamus inside a small bony cavity called the sella turcica.",
 
-location:"Behind the stomach",
+function:"Known as the master gland because it controls many other endocrine glands and regulates growth, reproduction, metabolism, stress response, and water balance.",
 
-function:"Produces insulin and digestive enzymes.",
+funFact:"Despite being only about the size of a pea, the pituitary gland influences nearly every major organ system in the body.",
 
-funFact:"The pancreas helps regulate blood sugar levels.",
+size:"Approximately 1 cm in diameter",
 
-size:"15–20 cm long",
-
-weight:"70–100 grams",
-
-highlightColor:"#FFAA00",
+weight:"About 0.5 grams",
 
 diseases:[
-"Diabetes",
-"Pancreatitis",
-"Pancreatic Cancer"
+"Pituitary Adenoma",
+"Acromegaly",
+"Gigantism",
+"Dwarfism",
+"Hypopituitarism",
+"Cushing's Disease",
+"Diabetes Insipidus"
 ],
 
 symptoms:[
-"Abdominal pain",
-"Weight loss",
-"High blood sugar"
+"Headaches",
+"Vision problems",
+"Fatigue",
+"Growth abnormalities",
+"Unexplained weight changes",
+"Hormonal imbalances",
+"Infertility",
+"Excessive thirst",
+"Frequent urination"
 ],
 
 treatments:[
-"Insulin Therapy",
-"Medications",
-"Surgery"
-]
+"Medication",
+"Hormone replacement therapy",
+"Surgery",
+"Radiation therapy",
+"Lifestyle management"
+],
 
+medicines:[
+"Cabergoline",
+"Bromocriptine",
+"Desmopressin",
+"Growth Hormone Therapy",
+"Corticosteroid Replacement"
+],
+
+healthyVsDisease:{
+healthy:"Produces balanced hormone levels that regulate growth, metabolism, reproduction, and other endocrine glands.",
+disease:"Abnormal hormone production can affect growth, fertility, metabolism, stress response, and many body functions."
 },
 
-bloodVessels:{
+statistics:[
+"The pituitary gland is often called the master gland of the endocrine system.",
+"Most pituitary tumors are non-cancerous.",
+"Pituitary disorders can affect people of all ages."
+],
 
-name:"bloodVessels",
+bodyJourney:[
+"Hypothalamus sends signals to pituitary gland",
+"Pituitary releases hormones into bloodstream",
+"Hormones travel to target glands and organs",
+"Target glands release their own hormones",
+"Body functions are regulated and maintained"
+],
+
+diseaseExplorer:{
+pituitaryAdenoma:"Usually a non-cancerous tumor that may alter hormone production.",
+acromegaly:"Excess growth hormone production in adults.",
+gigantism:"Excess growth hormone production during childhood.",
+hypopituitarism:"Reduced production of one or more pituitary hormones."
+},
+
+quiz:[
+{
+question:"Why is the pituitary gland called the master gland?",
+answer:"Because it controls many other endocrine glands."
+},
+{
+question:"Where is the pituitary gland located?",
+answer:"At the base of the brain."
+},
+{
+question:"Which brain structure directly controls the pituitary gland?",
+answer:"The hypothalamus."
+}
+]
+},
+
+
+bloodvessels:{
+name:"Blood Vessels",
 
 system:"Circulatory System",
 
-location:"Throughout the entire body",
+location:"Distributed throughout the entire body, connecting the heart to all organs, tissues, and cells.",
 
-function:"Transport blood, oxygen and nutrients.",
+function:"Transport oxygen, nutrients, hormones, and waste products between the heart and body tissues.",
 
-funFact:"If laid end to end, human blood vessels could circle Earth more than twice.",
+funFact:"If all the blood vessels in an adult were stretched end to end, they would extend for about 100,000 kilometers.",
 
-size:"Approximately 100,000 km total length",
+size:"Ranges from large arteries several centimeters wide to microscopic capillaries.",
 
-weight:"Varies",
-
-highlightColor:"#FF0000",
+weight:"Combined weight varies but forms a significant part of the circulatory system.",
 
 diseases:[
 "Atherosclerosis",
+"Hypertension",
 "Aneurysm",
-"Hypertension"
+"Peripheral Artery Disease",
+"Deep Vein Thrombosis",
+"Varicose Veins"
 ],
 
 symptoms:[
+"High blood pressure",
+"Leg pain",
+"Swelling",
 "Chest pain",
 "Poor circulation",
-"High blood pressure"
+"Numbness",
+"Fatigue"
 ],
 
 treatments:[
-"Lifestyle Changes",
-"Medications",
-"Surgery"
-]
-
-},
-kidneys:{
-
-name:"kidneys",
-
-system:"Urinary System",
-
-location:"Back of the abdomen on either side of the spine",
-
-function:"Filter blood and produce urine.",
-
-funFact:"Kidneys filter about 180 liters of fluid every day.",
-
-size:"About 11 cm long",
-
-weight:"150 grams each",
-
-highlightColor:"#AA66FF",
-
-diseases:[
-"Kidney Stones",
-"Kidney Failure",
-"Polycystic Kidney Disease"
-],
-
-symptoms:[
-"Back pain",
-"Swelling",
-"Fatigue",
-"Blood in urine"
-],
-
-treatments:[
-"Dialysis",
+"Lifestyle modifications",
+"Blood pressure control",
+"Blood thinners",
+"Cholesterol-lowering medications",
 "Surgery",
-"Medications"
+"Stent placement"
 ],
 
 healthyVsDisease:{
 healthy:[
-"Normal waste removal"
+"Blood flows freely throughout the body",
+"Arteries remain flexible and open",
+"Organs receive adequate oxygen",
+"Efficient waste removal occurs"
 ],
+
 diseased:[
-"Fluid buildup",
-"Toxin accumulation"
+"Blood flow becomes restricted",
+"Plaque narrows arteries",
+"Risk of clot formation increases",
+"Organs may receive insufficient oxygen"
 ]
 },
 
 medicines:[
-"Diuretics",
-"ACE Inhibitors"
+"Aspirin",
+"Warfarin",
+"Heparin",
+"Atorvastatin",
+"Amlodipine"
 ],
 
-bloodSupply:"Renal Arteries",
+bloodSupply:"Blood vessels themselves receive nourishment through tiny vessels called vasa vasorum.",
 
-nerves:"Renal Plexus",
+nerves:"Controlled by autonomic nerves that regulate vessel diameter and blood pressure.",
 
 statistics:[
-"Filter around 50 gallons of blood daily"
+"The human body contains approximately 100,000 km of blood vessels.",
+"Capillaries are so small that red blood cells pass through them one at a time.",
+"Blood vessels deliver oxygen and nutrients to trillions of cells daily."
 ],
 
 bodyJourneys:[
-"Urine Formation Journey"
+"Heart pumps oxygen-rich blood into arteries",
+"Arteries carry blood to organs",
+"Capillaries exchange oxygen and nutrients",
+"Cells release waste products",
+"Veins return blood to the heart",
+"Blood is sent to the lungs and recirculated"
 ],
 
 diseaseExplorers:[
-"Kidney Stone Explorer",
-"Kidney Failure Explorer"
+"Atherosclerosis: plaque buildup inside arteries.",
+"Aneurysm: abnormal bulging of a blood vessel wall.",
+"Deep Vein Thrombosis: blood clot formation in a deep vein.",
+"Peripheral Artery Disease: reduced blood flow to limbs."
+]
+},
+
+kidneys:{
+name:"Kidneys",
+
+system:"Urinary System",
+
+location:"Located on either side of the spine below the rib cage in the back of the abdomen.",
+
+function:"Filter waste products and excess water from the blood, regulate blood pressure, balance electrolytes, and produce urine.",
+
+funFact:"Your kidneys filter approximately 180 liters of fluid every day, but only about 1-2 liters leave the body as urine.",
+
+size:"Approximately 10-12 cm long each",
+
+weight:"Approximately 120-170 grams each",
+
+diseases:[
+"Chronic Kidney Disease",
+"Kidney Stones",
+"Kidney Infection",
+"Acute Kidney Injury",
+"Polycystic Kidney Disease",
+"Kidney Cancer"
+],
+
+symptoms:[
+"Back or side pain",
+"Blood in urine",
+"Swelling of legs and ankles",
+"Fatigue",
+"Nausea",
+"Frequent urination",
+"High blood pressure"
+],
+
+treatments:[
+"Medications",
+"Dietary changes",
+"Hydration therapy",
+"Dialysis",
+"Kidney stone removal",
+"Kidney transplant"
+],
+
+healthyVsDisease:{
+healthy:[
+"Efficient blood filtration",
+"Normal urine production",
+"Balanced electrolytes",
+"Stable blood pressure"
+],
+
+diseased:[
+"Waste products build up in blood",
+"Fluid retention occurs",
+"Blood pressure may rise",
+"Urine production becomes abnormal"
+]
+},
+
+medicines:[
+"ACE Inhibitors",
+"Losartan",
+"Furosemide",
+"Antibiotics",
+"Pain Relievers"
+],
+
+bloodSupply:"Supplied by the right and left renal arteries, which branch directly from the abdominal aorta.",
+
+nerves:"Controlled by the renal plexus, part of the autonomic nervous system.",
+
+statistics:[
+"The kidneys filter about 50 gallons (180 liters) of blood-derived fluid daily.",
+"Each kidney contains around one million filtering units called nephrons.",
+"Humans can survive with only one healthy kidney."
+],
+
+bodyJourneys:[
+"Blood enters the kidneys through renal arteries",
+"Waste and excess water are filtered",
+"Useful substances are reabsorbed",
+"Urine is formed",
+"Urine travels through the ureters",
+"Urine reaches the bladder for storage"
+],
+
+diseaseExplorers:[
+"Chronic Kidney Disease: gradual loss of kidney function over time.",
+"Kidney Stones: hard mineral deposits that form inside the kidneys.",
+"Acute Kidney Injury: sudden decline in kidney function.",
+"Polycystic Kidney Disease: inherited disorder causing fluid-filled cysts in the kidneys."
+]
+},
+
+spine:{
+name:"Spine",
+
+system:"Skeletal System",
+
+location:"Runs from the base of the skull down the back to the pelvis, forming the body's central support structure.",
+
+function:"Supports the body's weight, protects the spinal cord, allows movement and flexibility, and provides attachment points for muscles and ribs.",
+
+funFact:"The human spine contains 33 vertebrae at birth, but some fuse together during adulthood, leaving 26 movable and fused bones.",
+
+size:"Approximately 70 cm long in adults",
+
+weight:"Approximately 2-4 kilograms",
+
+diseases:[
+"Scoliosis",
+"Herniated Disc",
+"Spinal Stenosis",
+"Osteoporosis",
+"Degenerative Disc Disease",
+"Kyphosis",
+"Spondylolisthesis"
+],
+
+symptoms:[
+"Back pain",
+"Neck pain",
+"Numbness",
+"Tingling",
+"Muscle weakness",
+"Poor posture",
+"Reduced flexibility"
+],
+
+treatments:[
+"Physical therapy",
+"Pain management",
+"Exercise programs",
+"Bracing",
+"Surgery",
+"Lifestyle modifications"
+],
+
+healthyVsDisease:{
+healthy:[
+"Proper spinal alignment",
+"Normal flexibility and movement",
+"Effective spinal cord protection",
+"Strong support for the body"
+],
+
+diseased:[
+"Pain limits movement",
+"Abnormal spinal curvature develops",
+"Nerve compression may occur",
+"Reduced mobility and flexibility"
+]
+},
+
+medicines:[
+"Ibuprofen",
+"Acetaminophen",
+"Naproxen",
+"Muscle Relaxants",
+"Anti-inflammatory Medications"
+],
+
+bloodSupply:"Supplied by spinal branches from vertebral, intercostal, lumbar, and sacral arteries.",
+
+nerves:"Contains and protects the spinal cord, which carries nerve signals between the brain and the body.",
+
+statistics:[
+"The spine contains 33 vertebrae at birth.",
+"About 80% of adults experience back pain at some point in life.",
+"The spinal cord extends from the brain to the lower back through the vertebral canal."
+],
+
+bodyJourneys:[
+"Brain generates nerve signal",
+"Signal enters spinal cord",
+"Signal travels through spinal nerves",
+"Target muscles or organs receive instructions",
+"Response signals return to the brain",
+"Body maintains movement and sensation"
+],
+
+diseaseExplorers:[
+"Scoliosis: abnormal sideways curvature of the spine.",
+"Herniated Disc: disc material presses on nearby nerves.",
+"Spinal Stenosis: narrowing of spaces around the spinal cord.",
+"Degenerative Disc Disease: age-related wear and tear of spinal discs."
+]
+},
+
+pituitary:{
+
+name:"pituitary",
+
+system:"Endocrine System",
+
+location:"Base of the brain beneath the hypothalamus",
+
+function:"Known as the master gland. Controls growth, reproduction, metabolism and regulates many other endocrine glands.",
+
+funFact:"Although only about the size of a pea, the pituitary controls several major glands throughout the body.",
+
+size:"About 1 cm",
+
+weight:"0.5 grams",
+
+highlightColor:"#66CCFF",
+
+diseases:[
+"Pituitary Adenoma",
+"Acromegaly",
+"Gigantism",
+"Cushing Disease",
+"Hypopituitarism"
+],
+
+symptoms:[
+"Headaches",
+"Vision problems",
+"Growth abnormalities",
+"Fatigue",
+"Hormonal imbalances"
+],
+
+treatments:[
+"Medications",
+"Surgery",
+"Radiation Therapy",
+"Hormone Replacement Therapy"
+],
+
+healthyVsDisease:{
+healthy:[
+"Normal hormone production",
+"Normal growth",
+"Balanced metabolism"
+],
+diseased:[
+"Hormonal imbalance",
+"Abnormal growth",
+"Fatigue and weakness"
+]
+},
+
+medicines:[
+"Cabergoline",
+"Bromocriptine",
+"Growth Hormone Therapy",
+"Hormone Replacement Therapy"
+],
+
+bloodSupply:"Superior and Inferior Hypophyseal Arteries",
+
+nerves:"Connected to the hypothalamus through the pituitary stalk",
+
+statistics:[
+"Often called the Master Gland of the Endocrine System"
+],
+
+bodyJourneys:[
+"Hormone Control Journey",
+"Growth Regulation Journey"
+],
+
+diseaseExplorers:[
+"Pituitary Adenoma Explorer",
+"Acromegaly Explorer",
+"Cushing Disease Explorer"
 ]
 
 },
 
-spine:{
+thyroid:{
 
-name:"spinalcord",
+name:"Thyroid Gland",
 
-system:"Nervous System",
+system:"Endocrine System",
 
-location:"Inside the vertebral column",
+location:"Front of the neck, below the Adam's apple",
 
-function:"Carries signals between the brain and the body.",
+function:"Produces hormones that regulate metabolism, growth, body temperature, heart rate and energy production.",
 
-funFact:"The spinal cord is part of the central nervous system.",
+funFact:"The thyroid is shaped like a butterfly.",
 
-size:"About 45 cm long",
+size:"About 5 cm wide",
 
-weight:"Approximately 35 grams",
+weight:"15–25 grams",
 
-highlightColor:"#AA66FF",
+highlightColor:"#00FFCC",
 
 diseases:[
-"Spinal Cord Injury",
-"Multiple Sclerosis",
-"Spinal Tumors"
+"Hypothyroidism",
+"Hyperthyroidism",
+"Goiter",
+"Thyroid Cancer",
+"Hashimoto's Disease",
+"Graves' Disease"
 ],
 
 symptoms:[
-"Pain",
-"Numbness",
-"Weakness",
-"Paralysis"
+"Fatigue",
+"Weight gain",
+"Weight loss",
+"Rapid heartbeat",
+"Neck swelling",
+"Sensitivity to cold"
 ],
+
 treatments:[
-"Physical Therapy",
-"Surgery",
-"Medications"
+"Hormone replacement therapy",
+"Antithyroid medications",
+"Radioactive iodine therapy",
+"Surgery"
+],
+
+healthyVsDisease:{
+healthy:[
+"Normal metabolism",
+"Stable energy levels",
+"Normal body temperature"
+],
+diseased:[
+"Weight changes",
+"Fatigue",
+"Hormonal imbalance"
+]
+},
+
+medicines:[
+"Levothyroxine",
+"Methimazole",
+"Propylthiouracil"
+],
+
+bloodSupply:"Superior and Inferior Thyroid Arteries",
+
+nerves:"Cervical Sympathetic Nerves",
+
+statistics:[
+"Affects millions of people worldwide",
+"Women are affected more frequently than men"
+],
+
+bodyJourneys:[
+"Hormone Production Journey",
+"Metabolism Regulation Journey"
+],
+
+diseaseExplorers:[
+"Hypothyroidism Explorer",
+"Hyperthyroidism Explorer",
+"Thyroid Cancer Explorer"
+],
+
+quiz:[
+{
+question:"Which system contains the thyroid gland?",
+options:["Digestive","Endocrine","Respiratory","Urinary"],
+answer:"Endocrine"
+},
+{
+question:"What shape is the thyroid gland?",
+options:["Round","Butterfly","Triangle","Oval"],
+answer:"Butterfly"
+},
+{
+question:"Which hormone therapy treats hypothyroidism?",
+options:["Insulin","Levothyroxine","Aspirin","Penicillin"],
+answer:"Levothyroxine"
+}
 ]
 
-}
+},
 
+adrenalGlands:{
+
+name:"adrenalGlands",
+
+system:"Endocrine System",
+
+location:"On top of each kidney",
+
+function:"Produce hormones such as adrenaline, cortisol and aldosterone that regulate stress response, blood pressure and metabolism.",
+
+funFact:"The adrenal glands release adrenaline during the body's fight-or-flight response.",
+
+size:"About 5 cm long",
+
+weight:"4–6 grams each",
+
+highlightColor:"#FFAA00",
+
+diseases:[
+"Addison's Disease",
+"Cushing Syndrome",
+"Adrenal Tumors",
+"Pheochromocytoma"
+],
+
+symptoms:[
+"Fatigue",
+"Weight changes",
+"High blood pressure",
+"Muscle weakness",
+"Anxiety"
+],
+
+treatments:[
+"Hormone Replacement Therapy",
+"Surgery",
+"Medications",
+"Radiation Therapy"
+],
+
+healthyVsDisease:{
+healthy:[
+"Normal stress response",
+"Balanced hormone levels",
+"Healthy blood pressure"
+],
+diseased:[
+"Hormone imbalance",
+"Blood pressure problems",
+"Chronic fatigue"
+]
+},
+
+medicines:[
+"Hydrocortisone",
+"Fludrocortisone",
+"Ketoconazole"
+],
+
+bloodSupply:"Superior, Middle and Inferior Adrenal Arteries",
+
+nerves:"Sympathetic Nervous System",
+
+statistics:[
+"Produces adrenaline in seconds during emergencies"
+],
+
+bodyJourneys:[
+"Fight or Flight Journey",
+"Stress Response Journey"
+],
+
+diseaseExplorers:[
+"Addison Disease Explorer",
+"Cushing Syndrome Explorer",
+"Pheochromocytoma Explorer"
+]
+
+},
+
+trachea:{
+name:"Trachea",
+
+system:"Respiratory System",
+
+location:"Located in the neck and upper chest, connecting the larynx to the bronchi of the lungs.",
+
+function:"Carries air between the throat and lungs while helping filter, warm, and humidify incoming air.",
+
+funFact:"The trachea contains 16-20 C-shaped cartilage rings that prevent it from collapsing during breathing.",
+
+size:"10-12 cm long",
+
+weight:"Approximately 30 grams",
+
+diseases:[
+"Tracheitis",
+"Tracheal Stenosis",
+"Tracheomalacia",
+"Tracheal Cancer",
+"Airway Obstruction"
+],
+
+symptoms:[
+"Difficulty breathing",
+"Wheezing",
+"Persistent cough",
+"Noisy breathing",
+"Shortness of breath",
+"Chest discomfort"
+],
+
+treatments:[
+"Antibiotics",
+"Bronchodilators",
+"Airway therapy",
+"Surgery",
+"Tracheal stenting"
+],
+
+healthyVsDisease:{
+healthy:[
+"Air flows freely between throat and lungs",
+"Cartilage rings keep airway open",
+"Mucus traps dust and pathogens",
+"Breathing remains effortless"
+],
+
+diseased:[
+"Narrowed airway restricts airflow",
+"Breathing becomes difficult",
+"Increased infection risk",
+"Reduced oxygen delivery"
+]
+},
+
+medicines:[
+"Amoxicillin",
+"Azithromycin",
+"Albuterol",
+"Corticosteroids"
+],
+
+bloodSupply:"Receives blood mainly from branches of the inferior thyroid arteries and bronchial arteries.",
+
+nerves:"Controlled primarily by the vagus nerve and recurrent laryngeal nerves.",
+
+statistics:[
+"Adults breathe through the trachea over 20,000 times each day.",
+"The average adult trachea measures about 11 cm in length.",
+"The trachea contains approximately 16-20 cartilage rings."
+],
+
+bodyJourneys:[
+"Air enters through nose or mouth",
+"Passes through pharynx",
+"Travels through larynx",
+"Moves down trachea",
+"Splits into left and right bronchi",
+"Reaches lungs for gas exchange"
+],
+
+diseaseExplorers:[
+"Tracheitis: inflammation of the trachea usually caused by infection.",
+"Tracheal Stenosis: narrowing of the airway reducing airflow.",
+"Tracheomalacia: weakening of tracheal walls causing collapse.",
+"Airway Obstruction: blockage preventing normal breathing."
+]
+},
+
+esophagus:{
+name:"Esophagus",
+
+system:"Digestive System",
+
+location:"A muscular tube located behind the trachea, extending from the throat (pharynx) to the stomach.",
+
+function:"Transports food, liquids, and saliva from the mouth to the stomach through coordinated muscle contractions called peristalsis.",
+
+funFact:"The esophagus does not use gravity alone—food can still reach the stomach even when a person is upside down.",
+
+size:"Approximately 25 cm long",
+
+weight:"Approximately 35-50 grams",
+
+diseases:[
+"Gastroesophageal Reflux Disease (GERD)",
+"Esophagitis",
+"Barrett's Esophagus",
+"Esophageal Cancer",
+"Achalasia"
+],
+
+symptoms:[
+"Heartburn",
+"Difficulty swallowing",
+"Chest pain",
+"Food getting stuck",
+"Acid reflux",
+"Sore throat"
+],
+
+treatments:[
+"Antacids",
+"Proton Pump Inhibitors",
+"Lifestyle changes",
+"Endoscopic procedures",
+"Surgery"
+],
+
+healthyVsDisease:{
+healthy:[
+"Food moves smoothly into the stomach",
+"Muscles contract normally",
+"Minimal acid exposure",
+"Comfortable swallowing"
+],
+
+diseased:[
+"Acid damages the lining",
+"Difficulty swallowing occurs",
+"Pain or burning sensation develops",
+"Risk of complications increases"
+]
+},
+
+medicines:[
+"Omeprazole",
+"Pantoprazole",
+"Esomeprazole",
+"Antacids"
+],
+
+bloodSupply:"Supplied by branches of the inferior thyroid artery, aorta, and left gastric artery.",
+
+nerves:"Controlled mainly by the vagus nerve and autonomic nervous system.",
+
+statistics:[
+"The adult esophagus is about 25 cm long.",
+"Swallowing involves dozens of muscles working together.",
+"GERD affects millions of people worldwide."
+],
+
+bodyJourneys:[
+"Food enters the mouth",
+"Food is swallowed into the pharynx",
+"Food enters the esophagus",
+"Peristaltic waves push food downward",
+"Food reaches the lower esophageal sphincter",
+"Food enters the stomach"
+],
+
+diseaseExplorers:[
+"GERD: stomach acid repeatedly flows back into the esophagus.",
+"Esophagitis: inflammation of the esophageal lining.",
+"Barrett's Esophagus: abnormal changes in the esophageal lining due to acid exposure.",
+"Achalasia: a disorder where the esophagus has trouble moving food into the stomach."
+]
+}
 };
 
 let selectedHotspot = null;
@@ -1198,6 +2013,79 @@ document.getElementById("infoCard").innerHTML = `
 <p><b>Size:</b> ${organ.size}</p>
 
 <p><b>Weight:</b> ${organ.weight}</p>
+
+${organ.diseases ? `
+<h3>Diseases</h3>
+<ul>
+${organ.diseases.map(d=>`<li>${d}</li>`).join("")}
+</ul>
+` : ""}
+
+${organ.symptoms ? `
+<h3>Symptoms</h3>
+<ul>
+${organ.symptoms.map(s=>`<li>${s}</li>`).join("")}
+</ul>
+` : ""}
+
+${organ.treatments ? `
+<h3>Treatments</h3>
+<ul>
+${organ.treatments.map(t=>`<li>${t}</li>`).join("")}
+</ul>
+` : ""}
+
+${organ.healthyVsDisease ? `
+<h3>Healthy vs Disease</h3>
+
+<b>Healthy:</b>
+<ul>
+${organ.healthyVsDisease.healthy.map(h=>`<li>${h}</li>`).join("")}
+</ul>
+
+<b>Diseased:</b>
+<ul>
+${organ.healthyVsDisease.diseased.map(d=>`<li>${d}</li>`).join("")}
+</ul>
+` : ""}
+
+${organ.medicines ? `
+<h3>Medicines</h3>
+<ul>
+${organ.medicines.map(m=>`<li>${m}</li>`).join("")}
+</ul>
+` : ""}
+
+${organ.bloodSupply ? `
+<h3>Blood Supply</h3>
+<p>${organ.bloodSupply}</p>
+` : ""}
+
+${organ.nerves ? `
+<h3>Nerves</h3>
+<p>${organ.nerves}</p>
+` : ""}
+
+${organ.statistics ? `
+<h3>Interesting Statistics</h3>
+<ul>
+${organ.statistics.map(stat=>`<li>${stat}</li>`).join("")}
+</ul>
+` : ""}
+
+${organ.bodyJourneys ? `
+<h3>Body Journeys</h3>
+<ul>
+${organ.bodyJourneys.map(j=>`<li>${j}</li>`).join("")}
+</ul>
+` : ""}
+
+${organ.diseaseExplorers ? `
+<h3>Disease Explorers</h3>
+<ul>
+${organ.diseaseExplorers.map(d=>`<li>${d}</li>`).join("")}
+</ul>
+` : ""}
 
 `;
 
@@ -1233,7 +2121,8 @@ const systems = {
 
 nervous:[
 "brain",
-"spine"
+"spine",
+"pituitary"
 ],
 
 circulatory:[
@@ -1242,7 +2131,8 @@ circulatory:[
 ],
 
 respiratory:[
-"lungs"
+"lungs",
+"trachea"
 ],
 
 digestive:[
@@ -1250,7 +2140,8 @@ digestive:[
 "stomach",
 "pancreas",
 "smallIntestine",
-"largeIntestine"
+"largeIntestine",
+"esophagus"
 ],
 
 urinary:[
@@ -1259,7 +2150,11 @@ urinary:[
 ],
 skeleton:[],
 muscular:[],
-endocrine:[]
+endocrine:[
+"thyroid",
+"pituitary",
+"adrenalGlands"
+]
 
 };
 
