@@ -61,3 +61,4 @@ Examples:
 ⚡ Journey of a Nerve Signal 
 AND IT ALSO HAVE A SPECIAL FEATURE !!! ⚡TO TOGGLE THE ORGAN IN DIFFRENT MODE (HEALTHY OR DISEASE (SELECTED))!!!!!!⚡
 guys i will try my best to complete this as exact as i imagined it !!
+ ##THIS IS NOT JUST AN APPLICATION THAT IS BORING AND KINDA FEEL CLASSIC but a place where you can really understand something this is not mearly a 2d structural appliction it has got several animated video on how actually things work and all , sope i guess now we have to start talking bout the boring stuff . so  i use html , css, js for this and used images for background from goggle and and the human body is created by ai and the information is also taken by ai (i gave him the prompt about how much, format,what all info i needed ) . i also took help of ai for debugging and some ......outta worldd erroorr. ## so i guess thats all 
