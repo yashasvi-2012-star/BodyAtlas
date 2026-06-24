@@ -247,32 +247,32 @@ z-index:100;
 /* FRONT BODY */
 
 .brain{
-top:10px;
-left:125px;
+top:20px;
+left:130px;
 }
 
 .heart{
 top:140px;
-left:128px;
+left:134px;
 }
 
 .lungs{
 top:145px;
-left:100px;
+left:104px;
 }
 .liver{
 top:170px;
-left:110px;
+left:113px;
 }
 
 .stomach{
-top:175px;
-left:145px;
+top:190px;
+left:140px;
 }
 
 .pancreas{
 top:195px;
-left:124px;
+left:115px;
 }
 
 .smallIntestine{
@@ -307,17 +307,14 @@ left:130px;
 
 .bloodvessels{
 top:195px;
-left:140px;
+left:190px;
 }
-.pituitary{
-top:20px;
-left:125px;
-}
+
 /* BACK BODY */
 
 .spine{
 top:165px;
-left:180px;
+left:187px;
 }
 
 .kidneys{
@@ -328,6 +325,11 @@ left:165px;
 .adrenalGlands{
 top:175px;
 left:165px;
+}
+
+.pituitary{
+top:20px;
+left:187px;
 }
 
 
@@ -401,6 +403,21 @@ border:1px solid rgba(0,180,255,.2);
 background:rgba(0,180,255,.15);
 }
 
+
+.quiz-window{
+display:none;
+position:absolute;
+top:100px;
+left:250px;
+width:400px;
+padding:20px;
+background:rgba(20,20,20,0.95);
+border:1px solid cyan;
+border-radius:15px;
+color:white;
+z-index:1000;
+}
+
 </style>
 </head>
 
@@ -435,16 +452,22 @@ background:rgba(0,180,255,.15);
 
 <div class="panel">
 
-<h3>QUICK ACCESS</h3>
+<h3>🧪 HEALTH LAB</h3>
 
-<div class="menu-item">All Organs</div>
-<div class="menu-item">Healthy vs Disease</div>
-<div class="menu-item">Disease Explorer</div>
-<div class="menu-item">Medicine Journey</div>
-<div class="menu-item">Body Journeys</div>
-<div class="menu-item">Quiz System</div>
+
+
+
+<div class="menu-item" onclick="openHowItWorks()">
+🔬 How Does It Work?
+</div>
+
+
+<div class="menu-item" onclick="openQuiz()">
+🧠 Quiz System
+</div>
 
 </div>
+
 <div class="panel">
 
 <h3>BODY SYSTEMS</h3>
@@ -525,10 +548,7 @@ onclick="showOrgan('largeIntestine')"></div>
 onclick="showOrgan('bladder')"></div>
 
 <div class="hotspot bloodvessels"
-onclick="showOrgan('bloodVessels')"></div>
-
-<div class="hotspot pituitary"
-onclick="showOrgan('pituitary')"></div>
+onclick="showOrgan('bloodvessels')"></div>
 
 <div class="hotspot thyroid"
 onclick="showOrgan('thyroid')"></div>
@@ -540,6 +560,7 @@ onclick="showOrgan('trachea')"></div>
 onclick="showOrgan('esophagus')"></div>
 </div>
 
+
 <div class="body-container">
 
 <img src="ChatGPT Image Jun 22, 2026, 11_40_49 AM.png" class="body-img">
@@ -548,6 +569,8 @@ onclick="showOrgan('esophagus')"></div>
 <div class="hotspot spine" onclick="showOrgan('spine')"></div>
 <div class="hotspot adrenalGlands"
 onclick="showOrgan('adrenalGlands')"></div>
+<div class="hotspot pituitary"
+onclick="showOrgan('pituitary')"></div>
 </div>
 
 </div>
@@ -746,87 +769,116 @@ answer:3
 
 },
 
-heart:{
 
-name:"heart",
+heart: {
+name: "Heart",
 
-system:"Circulatory System",
+system: "Circulatory System",
 
-location:"Center of the chest between the lungs, slightly left",
+location: "Center of the chest between the lungs, slightly left of the midline",
 
-function:"Pumps blood throughout the body, delivering oxygen and nutrients.",
+function: "Pumps blood throughout the body, delivering oxygen and nutrients while removing waste products.",
 
-funFact:"The heart beats about 100,000 times every day.",
+funFact: "The heart beats about 100,000 times every day and pumps roughly 7,500 liters of blood daily.",
 
-size:"About the size of a clenched fist",
+size: "About the size of a clenched fist",
 
-weight:"250–350 grams",
+weight: "250–350 grams",
 
-highlightColor:"#FF4444",
-
-diseases:[
+diseases: [
 "Coronary Artery Disease",
 "Heart Attack",
 "Heart Failure",
 "Arrhythmia",
-"Cardiomyopathy"
+"Cardiomyopathy",
+"Valve Disease"
 ],
 
-symptoms:[
+symptoms: [
 "Chest pain",
 "Shortness of breath",
-"Palpitations",
 "Fatigue",
-"Dizziness"
+"Irregular heartbeat",
+"Dizziness",
+"Swelling in legs"
 ],
 
-treatments:[
+treatments: [
+"Lifestyle changes",
 "Medications",
 "Angioplasty",
+"Stent placement",
 "Bypass surgery",
-"Pacemaker",
-"Lifestyle changes"
+"Pacemaker implantation"
 ],
 
-healthyVsDisease:{
-healthy:[
-"Normal heartbeat",
-"Efficient circulation",
-"Good stamina"
+healthyVsDisease: {
+healthy: [
+"Strong regular heartbeat",
+"Efficient blood circulation",
+"Normal blood pressure",
+"Good oxygen delivery"
 ],
-diseased:[
-"Chest pain",
-"Weak pumping",
-"Irregular rhythm"
+
+diseased: [
+"Blocked arteries",
+"Weakened pumping ability",
+"Irregular rhythm",
+"Reduced oxygen supply"
 ]
 },
 
-medicines:[
+medicines: [
 "Aspirin",
-"Beta Blockers",
-"ACE Inhibitors",
-"Statins"
+"Atorvastatin",
+"Metoprolol",
+"Lisinopril",
+"Nitroglycerin"
 ],
 
-bloodSupply:"Coronary Arteries",
-
-nerves:"Cardiac Plexus",
-
-statistics:[
-"Beats about 3 billion times in a lifetime"
+bloodSupply: [
+"Right Coronary Artery",
+"Left Coronary Artery"
 ],
 
-bodyJourneys:[
-"Blood Circulation Journey",
-"Oxygen Delivery Journey"
+nerves: [
+"Cardiac Plexus",
+"Vagus Nerve",
+"Sympathetic Cardiac Nerves"
 ],
 
-diseaseExplorers:[
-"Heart Attack Explorer",
-"Heart Failure Explorer"
-]
+statistics: [
+"Beats about 100,000 times daily",
+"Pumps about 7,500 liters of blood daily",
+"Average resting heart rate: 60–100 BPM",
+"Lifetime heartbeats exceed 2.5 billion"
+],
 
+bodyJourneys: [
+"Journey of Oxygenated Blood",
+"Journey of Deoxygenated Blood",
+"Journey Through Coronary Circulation"
+],
+
+diseaseExplorers: [
+{
+name: "Heart Attack",
+cause: "Blocked coronary artery",
+effect: "Heart muscle damage"
 },
+{
+name: "Heart Failure",
+cause: "Weak heart muscle",
+effect: "Reduced blood pumping"
+},
+{
+name: "Arrhythmia",
+cause: "Electrical signal disturbance",
+effect: "Irregular heartbeat"
+}
+]
+},
+
 lungs:{
 
 name:"lungs",
@@ -904,263 +956,551 @@ diseaseExplorers:[
 
 }
 ,
-liver:{
 
-name:"liver",
+liver: {
+name: "Liver",
 
-system:"Digestive System",
+system: "Digestive System",
 
-location:"Upper right abdomen",
+location: "Upper right side of the abdomen beneath the diaphragm",
 
-function:"Filters blood, removes toxins, produces bile and stores nutrients.",
+function: "Filters blood, removes toxins, produces bile, stores nutrients, and helps regulate metabolism.",
 
-funFact:"The liver can regenerate itself.",
+funFact: "The liver is the only major internal organ capable of regenerating itself after injury or partial removal.",
 
-size:"Largest internal organ",
+size: "Approximately 15–17 cm wide",
 
-weight:"About 1.5 kg",
+weight: "About 1.4–1.8 kg",
 
-highlightColor:"#FF9900",
-
-diseases:[
-"Hepatitis",
+diseases: [
 "Fatty Liver Disease",
+"Hepatitis",
 "Cirrhosis",
-"Liver Cancer"
+"Liver Cancer",
+"Liver Failure",
+"Hemochromatosis"
 ],
 
-symptoms:[
+symptoms: [
 "Jaundice",
+"Abdominal pain",
 "Fatigue",
 "Nausea",
-"Abdominal pain"
+"Loss of appetite",
+"Dark urine"
 ],
 
-treatments:[
-"Medications",
+treatments: [
 "Lifestyle changes",
-"Liver transplant"
+"Antiviral medications",
+"Weight loss",
+"Liver transplantation",
+"Cancer therapies",
+"Avoidance of alcohol"
 ],
 
-healthyVsDisease:{
-healthy:[
-"Efficient detoxification",
-"Normal digestion"
+healthyVsDisease: {
+healthy: [
+"Efficient toxin removal",
+"Normal bile production",
+"Healthy metabolism",
+"Proper nutrient storage"
 ],
-diseased:[
-"Jaundice",
-"Poor detoxification"
+
+diseased: [
+"Fat accumulation",
+"Scarring of tissue",
+"Reduced detoxification",
+"Impaired liver function"
 ]
 },
 
-medicines:[
-"Antivirals",
-"Lactulose"
+medicines: [
+"Entecavir",
+"Tenofovir",
+"Lactulose",
+"Ursodeoxycholic Acid",
+"Ribavirin"
 ],
 
-bloodSupply:"Hepatic Artery and Portal Vein",
-
-nerves:"Hepatic Plexus",
-
-statistics:[
-"Performs over 500 functions"
+bloodSupply: [
+"Hepatic Artery",
+"Portal Vein"
 ],
 
-bodyJourneys:[
-"Detoxification Journey",
-"Nutrient Storage Journey"
+nerves: [
+"Hepatic Plexus",
+"Vagus Nerve",
+"Sympathetic Fibers"
 ],
 
-diseaseExplorers:[
-"Hepatitis Explorer",
-"Cirrhosis Explorer"
-]
+statistics: [
+"Largest internal organ in the body",
+"Performs over 500 vital functions",
+"Receives about 25% of the heart's blood output",
+"Can regenerate lost tissue"
+],
 
+bodyJourneys: [
+"Journey of Nutrients Through the Liver",
+"Journey of Toxin Removal",
+"Journey of Bile Production"
+],
+
+diseaseExplorers: [
+{
+name: "Fatty Liver Disease",
+cause: "Excess fat accumulation",
+effect: "Liver inflammation and damage"
+},
+{
+name: "Hepatitis",
+cause: "Viral infection or toxins",
+effect: "Inflammation of liver tissue"
+},
+{
+name: "Cirrhosis",
+cause: "Long-term liver damage",
+effect: "Permanent liver scarring"
 }
-,
-stomach:{
+]
+}, 
+stomach: {
+name: "Stomach",
 
-name:"stomach",
+system: "Digestive System",
 
-system:"Digestive System",
+location: "Upper left abdomen, below the diaphragm and above the pancreas",
 
-location:"Upper left abdomen",
+function: "Stores food, mixes it with digestive juices, and begins the digestion of proteins.",
 
-function:"Breaks down food using acid and enzymes.",
+funFact: "The stomach lining replaces itself every few days to protect against its own acid.",
 
-funFact:"The stomach lining replaces itself every few days.",
+size: "About 25–30 cm long when expanded",
 
-size:"Can hold about 1 liter",
+weight: "150–200 grams when empty",
 
-weight:"About 150 grams empty",
-
-highlightColor:"#FF66CC",
-
-diseases:[
+diseases: [
 "Gastritis",
-"Ulcers",
+"Peptic Ulcer",
 "Stomach Cancer",
-"GERD"
+"Gastroenteritis",
+"Acid Reflux (GERD)",
+"Stomach Polyps"
 ],
 
-symptoms:[
+symptoms: [
+"Abdominal pain",
 "Heartburn",
 "Nausea",
 "Vomiting",
-"Abdominal pain"
+"Bloating",
+"Loss of appetite"
 ],
 
-treatments:[
+treatments: [
 "Antacids",
+"Proton Pump Inhibitors",
 "Antibiotics",
-"Diet changes"
+"Dietary changes",
+"Surgery",
+"Chemotherapy"
 ],
 
-healthyVsDisease:{
-healthy:[
-"Efficient digestion"
+healthyVsDisease: {
+healthy: [
+"Efficient food breakdown",
+"Normal acid production",
+"Healthy stomach lining",
+"Proper digestion"
 ],
-diseased:[
-"Pain",
-"Acid reflux"
+
+diseased: [
+"Inflamed lining",
+"Ulcer formation",
+"Excess acid production",
+"Impaired digestion"
 ]
 },
 
-medicines:[
+medicines: [
 "Omeprazole",
-"Pantoprazole"
+"Pantoprazole",
+"Famotidine",
+"Antacids",
+"Amoxicillin"
 ],
 
-bloodSupply:"Gastric Arteries",
-
-nerves:"Vagus Nerve",
-
-statistics:[
-"Produces about 2 liters of gastric juice daily"
+bloodSupply: [
+"Left Gastric Artery",
+"Right Gastric Artery",
+"Left Gastroepiploic Artery",
+"Right Gastroepiploic Artery"
 ],
 
-bodyJourneys:[
-"Food Digestion Journey"
+nerves: [
+"Vagus Nerve",
+"Celiac Plexus",
+"Sympathetic Fibers"
 ],
 
-diseaseExplorers:[
-"Ulcer Explorer",
-"GERD Explorer"
+statistics: [
+"Can hold up to 4 liters of food and liquid",
+"Produces strong hydrochloric acid",
+"Food remains in the stomach for 2–6 hours",
+"Part of the digestive tract between esophagus and small intestine"
+],
+
+bodyJourneys: [
+"Journey of Food Through the Stomach",
+"Journey of Protein Digestion",
+"Journey of Gastric Acid Production"
+],
+
+diseaseExplorers: [
+{
+name: "Gastritis",
+cause: "Inflammation of stomach lining",
+effect: "Pain and digestive discomfort"
+},
+{
+name: "Peptic Ulcer",
+cause: "Damage to stomach lining",
+effect: "Open sores in the stomach"
+},
+{
+name: "Stomach Cancer",
+cause: "Abnormal growth of stomach cells",
+effect: "Loss of stomach function"
+}
 ]
-
 },
 
-smallIntestine:{
+smallIntestine: {
 
-name:"smallIntestine",
+name: "Small Intestine",
 
-system:"Digestive System",
+system: "Digestive System",
 
-location:"Abdominal cavity",
+location: "Between the stomach and large intestine, occupying much of the abdominal cavity",
 
-function:"Absorbs nutrients from food.",
+function: "Digests food and absorbs most nutrients, vitamins, minerals, and water from food.",
 
-funFact:"The small intestine is about 6 meters long.",
+funFact: "Although called 'small', the small intestine is about 6–7 meters long in adults.",
 
-size:"Approximately 6 meters",
+size: "Approximately 6–7 meters long",
 
-weight:"Around 600 grams",
+weight: "Around 600–800 grams",
 
-highlightColor:"#00FF99",
-
-diseases:[
+diseases: [
 "Celiac Disease",
 "Crohn's Disease",
-"Intestinal Obstruction"
+"Small Bowel Obstruction",
+"Intestinal Infection",
+"Small Intestine Cancer"
 ],
 
-symptoms:[
-"Diarrhea",
+symptoms: [
 "Abdominal pain",
+"Diarrhea",
+"Bloating",
+"Weight loss",
+"Fatigue",
+"Nausea"
+],
+
+treatments: [
+"Dietary changes",
+"Medications",
+"Antibiotics",
+"Anti-inflammatory therapy",
+"Surgery"
+],
+
+healthyVsDisease: {
+healthy: [
+"Efficient nutrient absorption",
+"Healthy intestinal lining",
+"Normal digestion",
+"Proper movement of food"
+],
+
+diseased: [
+"Poor nutrient absorption",
+"Inflammation",
+"Blockage of food movement",
+"Digestive discomfort"
+]
+},
+
+medicines: [
+"Loperamide",
+"Mesalamine",
+"Prednisone",
+"Antibiotics",
+"Vitamin Supplements"
+],
+
+bloodSupply: [
+"Superior Mesenteric Artery",
+"Intestinal Arteries"
+],
+
+nerves: [
+"Enteric Nervous System",
+"Vagus Nerve",
+"Sympathetic Fibers"
+],
+
+statistics: [
+"About 90% of nutrient absorption occurs here",
+"Length of approximately 6–7 meters",
+"Contains millions of villi for absorption",
+"Major site of digestion and absorption"
+],
+
+bodyJourneys: [
+"Journey of Nutrient Absorption",
+"Journey of Digested Food",
+"Journey Through the Digestive Tract"
+],
+
+diseaseExplorers: [
+{
+name: "Celiac Disease",
+cause: "Immune reaction to gluten",
+effect: "Damage to intestinal lining"
+},
+{
+name: "Crohn's Disease",
+cause: "Chronic inflammation",
+effect: "Digestive tract damage"
+},
+{
+name: "Small Bowel Obstruction",
+cause: "Blockage in intestine",
+effect: "Food cannot pass normally"
+}
+]
+},
+
+largeIntestine: {
+
+name: "Large Intestine",
+
+system: "Digestive System",
+
+location: "Surrounds the small intestine and extends from the cecum to the rectum",
+
+function: "Absorbs water and electrolytes from remaining food material and forms, stores, and eliminates feces.",
+
+funFact: "The large intestine contains trillions of beneficial bacteria that help digestion and produce vitamins.",
+
+size: "Approximately 1.5 meters long",
+
+weight: "Around 1–2 kg",
+
+diseases: [
+"Ulcerative Colitis",
+"Diverticulitis",
+"Irritable Bowel Syndrome (IBS)",
+"Colon Cancer",
+"Constipation",
+"Crohn's Disease"
+],
+
+symptoms: [
+"Abdominal pain",
+"Diarrhea",
+"Constipation",
+"Blood in stool",
+"Bloating",
 "Weight loss"
 ],
 
-treatments:[
-"Diet Changes",
+treatments: [
+"Dietary changes",
 "Medications",
-"Surgery"
-]
-
-},
-
-largeIntestine:{
-
-name:"largeIntestine",
-
-system:"Digestive System",
-
-location:"Surrounds the small intestine",
-
-function:"Absorbs water and forms stool.",
-
-funFact:"Contains trillions of beneficial bacteria.",
-
-size:"Approximately 1.5 meters",
-
-weight:"About 1 kg",
-
-highlightColor:"#00CC66",
-
-diseases:[
-"Ulcerative Colitis",
-"Colon Cancer",
-"Diverticulitis"
-],
-
-symptoms:[
-"Abdominal pain",
-"Constipation",
-"Rectal bleeding"
-],
-
-treatments:[
-"Medications",
+"Probiotics",
 "Surgery",
-"Diet Changes"
+"Chemotherapy",
+"Hydration therapy"
+],
+
+healthyVsDisease: {
+healthy: [
+"Normal water absorption",
+"Regular bowel movements",
+"Healthy gut bacteria",
+"Proper waste elimination"
+],
+
+diseased: [
+"Inflammation",
+"Abnormal bowel habits",
+"Poor water absorption",
+"Growth of tumors"
 ]
-
 },
-bladder:{
 
-name:"bladder",
+medicines: [
+"Loperamide",
+"Mesalamine",
+"Fiber Supplements",
+"Probiotics",
+"Laxatives"
+],
 
-system:"Urinary System",
+bloodSupply: [
+"Superior Mesenteric Artery",
+"Inferior Mesenteric Artery"
+],
 
-location:"Pelvic cavity",
+nerves: [
+"Enteric Nervous System",
+"Vagus Nerve",
+"Sympathetic Fibers"
+],
 
-function:"Stores urine before excretion.",
+statistics: [
+"Approximately 1.5 meters long",
+"Houses trillions of bacteria",
+"Absorbs most remaining water from food",
+"Important for immune system health"
+],
 
-funFact:"A healthy bladder can hold about 400–600 mL of urine.",
+bodyJourneys: [
+"Journey of Water Absorption",
+"Journey of Waste Formation",
+"Journey Through the Colon"
+],
 
-size:"Varies depending on fullness",
+diseaseExplorers: [
+{
+name: "Ulcerative Colitis",
+cause: "Inflammation of colon lining",
+effect: "Ulcers and bleeding"
+},
+{
+name: "Colon Cancer",
+cause: "Abnormal cell growth",
+effect: "Tumor formation in colon"
+},
+{
+name: "Diverticulitis",
+cause: "Inflamed pouches in colon wall",
+effect: "Pain and infection"
+}
+]
+},
+bladder: {
 
-weight:"Approximately 50 grams empty",
+name: "Bladder",
 
-highlightColor:"#66CCFF",
+system: "Urinary System",
 
-diseases:[
-"Urinary Tract Infection",
+location: "Pelvic cavity behind the pubic bone",
+
+function: "Stores urine received from the kidneys until it is expelled from the body.",
+
+funFact: "A healthy adult bladder can comfortably hold about 400–600 mL of urine before the urge to urinate becomes strong.",
+
+size: "Varies depending on fullness",
+
+weight: "Approximately 50–70 grams when empty",
+
+diseases: [
+"Urinary Tract Infection (UTI)",
 "Bladder Cancer",
-"Incontinence"
+"Overactive Bladder",
+"Urinary Incontinence",
+"Bladder Stones",
+"Interstitial Cystitis"
 ],
 
-symptoms:[
-"Painful urination",
+symptoms: [
 "Frequent urination",
-"Blood in urine"
+"Painful urination",
+"Blood in urine",
+"Pelvic pain",
+"Urgent need to urinate",
+"Difficulty urinating"
 ],
 
-treatments:[
+treatments: [
 "Antibiotics",
+"Bladder training",
+"Medications",
 "Surgery",
-"Bladder Training"
-]
+"Hydration",
+"Pelvic floor exercises"
+],
 
+healthyVsDisease: {
+healthy: [
+"Normal urine storage",
+"Controlled urination",
+"Healthy bladder lining",
+"Complete emptying of urine"
+],
+
+diseased: [
+"Frequent urgency",
+"Pain during urination",
+"Leakage of urine",
+"Blood in urine"
+]
+},
+
+medicines: [
+"Nitrofurantoin",
+"Oxybutynin",
+"Tolterodine",
+"Mirabegron",
+"Trimethoprim"
+],
+
+bloodSupply: [
+"Superior Vesical Artery",
+"Inferior Vesical Artery"
+],
+
+nerves: [
+"Pelvic Nerves",
+"Pudendal Nerve",
+"Sacral Plexus"
+],
+
+statistics: [
+"Stores 400–600 mL of urine",
+"Can expand significantly when full",
+"Part of the urinary system",
+"Works closely with kidneys and ureters"
+],
+
+bodyJourneys: [
+"Journey of Urine Storage",
+"Journey of Urine Elimination",
+"Journey Through the Urinary System"
+],
+
+diseaseExplorers: [
+{
+name: "Urinary Tract Infection",
+cause: "Bacterial infection",
+effect: "Pain and frequent urination"
+},
+{
+name: "Bladder Cancer",
+cause: "Abnormal cell growth",
+effect: "Tumor formation"
+},
+{
+name: "Overactive Bladder",
+cause: "Abnormal bladder muscle activity",
+effect: "Frequent urge to urinate"
+}
+]
 },
 
 pituitary:{
@@ -1260,7 +1600,7 @@ answer:"The hypothalamus."
 
 
 bloodvessels:{
-name:"Blood Vessels",
+name:"Blood vessels",
 
 system:"Circulatory System",
 
@@ -1806,6 +2146,114 @@ diseaseExplorers:[
 
 },
 
+pancreas: {
+name: "Pancreas",
+
+system: "Digestive System",
+
+location: "Behind the stomach in the upper abdomen",
+
+function: "Produces digestive enzymes and hormones such as insulin and glucagon to regulate blood sugar.",
+
+funFact: "The pancreas has both digestive and endocrine functions, making it a unique organ.",
+
+size: "About 15 cm long",
+
+weight: "70–100 grams",
+
+diseases: [
+"Pancreatitis",
+"Pancreatic Cancer",
+"Diabetes Mellitus",
+"Pancreatic Cysts",
+"Exocrine Pancreatic Insufficiency"
+],
+
+symptoms: [
+"Abdominal pain",
+"Nausea",
+"Vomiting",
+"Weight loss",
+"Jaundice",
+"High blood sugar"
+],
+
+treatments: [
+"Insulin therapy",
+"Pain management",
+"Surgery",
+"Chemotherapy",
+"Dietary changes"
+],
+
+healthyVsDisease: {
+healthy: [
+"Normal enzyme production",
+"Balanced blood sugar",
+"Healthy digestion",
+"Normal hormone secretion"
+],
+
+diseased: [
+"Inflammation",
+"Insufficient insulin",
+"Poor digestion",
+"Tumor growth"
+]
+},
+
+medicines: [
+"Insulin",
+"Metformin",
+"Pancrelipase",
+"Glimepiride",
+"Pain relievers"
+],
+
+bloodSupply: [
+"Splenic Artery",
+"Superior Pancreaticoduodenal Artery",
+"Inferior Pancreaticoduodenal Artery"
+],
+
+nerves: [
+"Celiac Plexus",
+"Vagus Nerve",
+"Sympathetic Fibers"
+],
+
+statistics: [
+"Produces about 1.5 liters of digestive juice daily",
+"Contains insulin-producing beta cells",
+"Essential for blood sugar regulation",
+"Located behind the stomach"
+],
+
+bodyJourneys: [
+"Journey of Insulin",
+"Journey of Digestive Enzymes",
+"Journey of Blood Sugar Regulation"
+],
+
+diseaseExplorers: [
+{
+name: "Diabetes",
+cause: "Insufficient insulin production",
+effect: "High blood sugar"
+},
+{
+name: "Pancreatitis",
+cause: "Inflammation of the pancreas",
+effect: "Digestive and hormonal dysfunction"
+},
+{
+name: "Pancreatic Cancer",
+cause: "Abnormal cell growth",
+effect: "Organ damage and spread of cancer"
+}
+]
+},
+
 trachea:{
 name:"Trachea",
 
@@ -2184,7 +2632,187 @@ hotspot.classList.add("active");
 });
 
 }
+
+function openDiseaseExplorer(){
+alert("Disease Explorer Coming Soon");
+}
+
+function openMedicineExplorer(){
+alert("Medicine Explorer Coming Soon");
+}
+
+function openQuiz(){
+document.getElementById("quizWindow").style.display = "block";
+loadQuestion();
+}
+
+
+
+
+const quizQuestions = [
+
+{
+question:"Which organ produces insulin?",
+answers:["Liver","Pancreas","Kidney","Stomach"],
+correct:1
+},
+
+{
+question:"Which organ pumps blood through the body?",
+answers:["Lungs","Heart","Liver","Brain"],
+correct:1
+},
+
+{
+question:"Which organ stores urine?",
+answers:["Kidney","Bladder","Pancreas","Liver"],
+correct:1
+}
+
+];
+
+let currentQuestion = 0;
+let quizScore = 0;
+let selectedAnswer = null;
+
+function openQuiz(){
+
+document.getElementById("quizWindow").style.display = "block";
+
+currentQuestion = 0;
+quizScore = 0;
+selectedAnswer = null;
+
+document.getElementById("score").textContent = 0;
+
+loadQuestion();
+
+}
+
+function loadQuestion(){
+
+if(currentQuestion >= quizQuestions.length){
+
+document.getElementById("questionText").innerHTML =
+`🎉 Quiz Complete! Final Score: ${quizScore}/${quizQuestions.length}`;
+
+document.getElementById("answers").innerHTML = "";
+
+document.getElementById("quizResult").innerHTML = "";
+
+document.getElementById("progress").innerHTML = "";
+
+document.getElementById("nextBtn").style.display = "none";
+
+return;
+
+}
+
+const q = quizQuestions[currentQuestion];
+
+document.getElementById("questionText").innerHTML =
+q.question;
+
+document.getElementById("progress").innerHTML =
+`Question ${currentQuestion + 1} / ${quizQuestions.length}`;
+
+let html = "";
+
+q.answers.forEach((answer,index)=>{
+
+html += `
+
+<div class="menu-item"
+onclick="selectedAnswer=${index}">
+${answer}
+</div>
+`;
+
+});
+
+document.getElementById("answers").innerHTML = html;
+
+document.getElementById("quizResult").innerHTML = "";
+
+document.getElementById("nextBtn").style.display = "inline-block";
+
+}
+
+function submitAnswer(){
+
+if(selectedAnswer === null) return;
+
+const q = quizQuestions[currentQuestion];
+
+if(selectedAnswer === q.correct){
+
+document.getElementById("quizResult").innerHTML =
+"✅ Correct!";
+
+quizScore++;
+
+}else{
+
+document.getElementById("quizResult").innerHTML =
+"❌ Incorrect!";
+
+}
+
+document.getElementById("score").textContent =
+quizScore;
+
+}
+
+function nextQuestion(){
+
+currentQuestion++;
+
+selectedAnswer = null;
+
+loadQuestion();
+
+}
+
+function closeQuiz(){
+
+document.getElementById("quizWindow").style.display = "none";
+
+}
+
+function openHowItWorks(){
+window.location.href = "howitworks.html";
+}
+
+
 </script>
+
+<div id="quizWindow" class="quiz-window">
+
+<h2>🧠 BodyAtlas Quiz</h2>
+
+<p id="progress"></p>
+
+<p id="questionText">Question</p>
+
+<div id="answers"></div>
+
+<button onclick="submitAnswer()">Submit</button>
+
+<p id="quizResult"></p>
+
+<p>Score: <span id="score">0</span></p>
+
+<button id="nextBtn" onclick="nextQuestion()">
+Next Question
+</button>
+
+<button onclick="closeQuiz()">
+❌ Close
+</button>
+
+</div>
+
+
 
 </body>
 
