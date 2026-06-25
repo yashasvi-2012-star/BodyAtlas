@@ -19,7 +19,7 @@ you can explore
 ⚡Respiratory system
 ⚡Circulatory system
 ⚡Skeletal system
-AND YOU CAN EVEN !!!!
+AND YOU CAN EVEN !!!
 Click a disease and see:
 
 ⚡What changes inside the body
