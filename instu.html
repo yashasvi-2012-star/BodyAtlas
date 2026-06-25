@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html lang="en">
+ <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BodyAtlas -🧰 instruments Learning Hub</title>
+<style> *{ margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif; } 
+body{ background:linear-gradient(135deg,#101c39,#32435f); height:100vh; overflow:hidden; color:white; } 
+.container{ display:flex; height:100vh; } /* Sidebar */ 
+.sidebar{ width:280px; background:rgba(36, 4, 4, 0.08); backdrop-filter:blur(12px); border-right:1px solid rgba(255,255,255,0.1); padding:20px; overflow-y:auto; } 
+.back-btn{ display:block; width:100%; padding:12px; margin-bottom:20px; border:none; border-radius:12px; cursor:pointer; font-size:15px; font-weight:bold; background:rgba(255,255,255,0.12); color:white; transition:.3s; } 
+.back-btn:hover{ transform:translateY(-2px); background:rgba(255,255,255,0.18); } .sidebar h2{ margin-bottom:20px; text-align:center; } 
+.topic-card{ background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.1); padding:15px; border-radius:16px; margin-bottom:12px; cursor:pointer; transition:.3s; }
+ .topic-card:hover{ transform:translateY(-3px); background:rgba(255,255,255,0.15); } 
+ .topic-card.active{ border:1px solid #38bdf8; box-shadow:0 0 15px rgba(56,189,248,0.5); } 
+
+ /* Main Content */ 
+ .main{ flex:1; padding:30px; overflow-y:auto; } 
+ .welcome{ height:100%; display:flex; justify-content:center; align-items:center; text-align:center; flex-direction:column; } 
+ .welcome h1{ font-size:42px; margin-bottom:15px; } .welcome p{ font-size:18px; opacity:0.8; } 
+ .video-section{ display:none; } 
+ .video-container{ width:100%; aspect-ratio:16/9; background:#000; border-radius:20px; overflow:hidden; margin-bottom:25px; } 
+ .video-container iframe{ width:100%; height:100%; border:none; } 
+ .info-card{ background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.1); padding:25px; border-radius:20px; backdrop-filter:blur(10px); }
+  .info-card h1{ margin-bottom:15px; } 
+  .info-card p{ line-height:1.7; margin-bottom:20px; }
+   .learn-list li{ margin-left:20px; margin-bottom:10px; } @media(max-width:900px){
+     .container{ flex-direction:column; } 
+     .sidebar{ width:100%; height:250px; } 
+     .main{ height:calc(100vh - 250px); } } 
+     </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="sidebar">
+
+<button class="back-btn" onclick="window.location.href='howitworks.html'"> ← Back to Health Lab </button><h2>🧰 Instruments</h2>
+
+<div id="topicList"></div>
+
+</div>
+
+<div class="main">
+
+<div class="welcome" id="welcomeScreen"> <h1>� Instruments Learning Hub</h1> <p>Select an instrument from the sidebar to begin learning.</p> </div>
+
+<div class="video-section" id="videoSection">
+
+<div class="video-container"> <iframe
+id="videoFrame"
+src=""
+allowfullscreen
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+</iframe> </div>
+
+<div class="info-card">
+
+<h1 id="topicTitle"></h1>
+
+<p id="topicDescription"></p>
+
+<h3>📚 What You'll Learn</h3> <br>
+
+<ul class="learn-list" id="learnList"></ul>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+  const instruments = [
+
+{
+title:"MRI Scanner",
+video:"https://www.youtube.com/embed/FvOezMIL9BU",
+description:"Learn about the MRI scanner, a medical imaging device used to visualize internal structures of the body.",
+learn:[
+"What an MRI scanner is",
+"Uses and benefits",
+"Precautions and warnings"
+]
+},
+
+
+{
+title:"CT Scanner",
+video:"https://www.youtube.com/embed/eITX5n9jOyM",
+description:"Learn about the CT scanner, a medical imaging device used to create detailed images of the body.",
+learn:[
+"What a CT scanner is",
+"Uses and benefits",
+"Precautions and warnings"
+]
+},
+
+
+{
+title:"X ray machine ",
+video:"https://www.youtube.com/embed/gsV7SJDDCY4",
+description:"Learn about the X-ray machine, a medical imaging device used to create images of the body's internal structures.",
+learn:[
+"What an X-ray machine is",
+"Uses and benefits",
+"Precautions and warnings"
+]
+},
+
+
+{
+title:"ultrasound machine",
+video:"https://www.youtube.com/embed/I1Bdp2tMFsY",
+description:"Learn about the ultrasound machine, a medical imaging device used to visualize internal structures of the body.",
+learn:[
+"What an ultrasound machine is",
+"Uses and benefits",
+"Precautions and warnings"
+]
+},
+
+
+{
+title:"pacemaker",
+video:"https://www.youtube.com/embed/SMXBR_YFocs",
+description:"Learn about the pacemaker, a medical device used to regulate heart rhythm.",
+learn:[
+"What a pacemaker is",
+"Types of pacemakers",
+"Uses and benefits",
+"Precautions and warnings"
+]
+},
+
+
+
+{
+title:"ventilator",
+video:"https://www.youtube.com/embed/yDtKBXOEsoM",
+description:"Learn about the ventilator, a medical device used to assist with breathing.",
+learn:[
+"What a ventilator is",
+"Uses and benefits",
+"Precautions and warnings"
+]
+},
+
+
+{
+title:"hearing aid ",
+video:"https://www.youtube.com/embed/AxzVyMcmRcs",
+description:"Learn about the hearing aid, a device used to improve hearing.",
+learn:[
+"What a hearing aid is",
+"Types of hearing aids",
+"Uses and benefits",
+"Precautions and warnings"
+]
+}
+
+];
+
+        
+const topicList = document.getElementById("topicList"); 
+        instruments.forEach((item,index)=>{ const card=document.createElement("div");
+         card.className="topic-card";
+         card.innerHTML=item.title; card.onclick=()=>showTopic(index); topicList.appendChild(card); }); 
+         function showTopic(index){ const data=instruments[index]; document
+         .getElementById("welcomeScreen").style.display="none"; document
+         .getElementById("videoSection").style.display="block"; document
+         .getElementById("videoFrame").src=data.video; document
+         .getElementById("topicTitle").textContent=data.title; document
+         .getElementById("topicDescription").textContent=data.description;
+         
+         const learnList=document
+         .getElementById("learnList"); learnList.innerHTML=""; data.learn.forEach(point=>{ const li=document
+         .createElement("li"); li.textContent=point; learnList.appendChild(li); }); document.querySelectorAll(".topic-card")
+         .forEach(card=>{ card.classList.remove("active"); }); document.querySelectorAll(".topic-card")[index].classList.add("active"); } 
+         
+         </script>
+
+</body> 
+
+
+</html>

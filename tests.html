@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en">
+ <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BodyAtlas - 💉 Tests Learning Hub</title>
+<style> *{ margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif; } 
+body{ background:linear-gradient(135deg,#101c39,#32435f); height:100vh; overflow:hidden; color:white; } 
+.container{ display:flex; height:100vh; } /* Sidebar */ 
+.sidebar{ width:280px; background:rgba(36, 4, 4, 0.08); backdrop-filter:blur(12px); border-right:1px solid rgba(255,255,255,0.1); padding:20px; overflow-y:auto; } 
+.back-btn{ display:block; width:100%; padding:12px; margin-bottom:20px; border:none; border-radius:12px; cursor:pointer; font-size:15px; font-weight:bold; background:rgba(255,255,255,0.12); color:white; transition:.3s; } 
+.back-btn:hover{ transform:translateY(-2px); background:rgba(255,255,255,0.18); } .sidebar h2{ margin-bottom:20px; text-align:center; } 
+.topic-card{ background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.1); padding:15px; border-radius:16px; margin-bottom:12px; cursor:pointer; transition:.3s; }
+ .topic-card:hover{ transform:translateY(-3px); background:rgba(255,255,255,0.15); } 
+ .topic-card.active{ border:1px solid #38bdf8; box-shadow:0 0 15px rgba(56,189,248,0.5); } 
+
+ /* Main Content */ 
+ .main{ flex:1; padding:30px; overflow-y:auto; } 
+ .welcome{ height:100%; display:flex; justify-content:center; align-items:center; text-align:center; flex-direction:column; } 
+ .welcome h1{ font-size:42px; margin-bottom:15px; } .welcome p{ font-size:18px; opacity:0.8; } 
+ .video-section{ display:none; } 
+ .video-container{ width:100%; aspect-ratio:16/9; background:#000; border-radius:20px; overflow:hidden; margin-bottom:25px; } 
+ .video-container iframe{ width:100%; height:100%; border:none; } 
+ .info-card{ background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.1); padding:25px; border-radius:20px; backdrop-filter:blur(10px); }
+  .info-card h1{ margin-bottom:15px; } 
+  .info-card p{ line-height:1.7; margin-bottom:20px; }
+   .learn-list li{ margin-left:20px; margin-bottom:10px; } @media(max-width:900px){
+     .container{ flex-direction:column; } 
+     .sidebar{ width:100%; height:250px; } 
+     .main{ height:calc(100vh - 250px); } } 
+     </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="sidebar">
+
+<button class="back-btn" onclick="window.location.href='howitworks.html'"> ← Back to Health Lab </button><h2> 💉Tests </h2>
+
+<div id="topicList"></div>
+
+</div>
+
+<div class="main">
+
+<div class="welcome" id="welcomeScreen"> <h1> 💉 Tests Learning Hub</h1> <p>Select a test from the sidebar to begin learning.</p> </div>
+
+<div class="video-section" id="videoSection">
+
+<div class="video-container"> <iframe
+id="videoFrame"
+src=""
+allowfullscreen
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+</iframe> </div>
+
+<div class="info-card">
+
+<h1 id="topicTitle"></h1>
+
+<p id="topicDescription"></p>
+
+<h3>📚 What You'll Learn</h3> <br>
+
+<ul class="learn-list" id="learnList"></ul>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+  const tests = [
+
+{
+title:"Blood Test",
+video:"https://www.youtube.com/embed/8WzuYHPPY1M",
+description:"Learn about blood tests, a common diagnostic procedure to analyze blood components.",
+learn:[
+"What a blood test is",
+"Types of blood tests",
+"Preparation and procedure"
+]
+},
+
+
+{
+title:"ECG test",
+video:"https://www.youtube.com/embed/RYZ4daFwMa8",
+description:"Learn about ECG tests, a diagnostic procedure to record the electrical activity of the heart.",
+learn:[
+"What an ECG test is",
+"Types of ECG tests",
+"Preparation and procedure"
+]
+},
+
+
+{
+title:"MRI scan test ",
+video:"https://www.youtube.com/embed/nFkBhUYynUw",
+description:"Learn about MRI scans, a diagnostic procedure to create detailed images of the body's internal structures.",
+learn:[
+"What an MRI scan is",
+"Types of MRI scans",
+"Preparation and procedure"
+]
+},
+
+
+
+{
+title:"ct-scan test",
+video:"https://www.youtube.com/embed/0OdNI3lSgLc",
+description:"Learn about CT scans, a diagnostic procedure to create detailed images of the body's internal structures.",
+learn:[
+"What a CT scan is",
+"Types of CT scans",
+"Preparation and procedure"
+]
+},
+
+
+
+{
+title:"ultrasound tests ",
+video:"https://www.youtube.com/embed/T9O_YGM99EI",
+description:"learn about ultrasound tests, a diagnostic procedure to create images of the body's internal structures.",
+learn:[
+    "what an ultrasound test is",
+    "types of ultrasound tests",
+    "Preparation and procedure",
+    "Precautions and warnings"
+]
+},
+
+
+{
+title:"biopsy test",
+video:"https://www.youtube.com/embed/fMLpIEYWPo0",
+description:"Learn about biopsy tests, a diagnostic procedure to remove a small sample of tissue for examination.",
+learn:[
+"What a biopsy test is",
+"Types of biopsy tests",
+"Preparation and procedure"
+]
+},
+
+
+];
+
+        
+const topicList = document.getElementById("topicList"); 
+        tests.forEach((item,index)=>{ const card=document.createElement("div");
+         card.className="topic-card";
+         card.innerHTML=item.title; card.onclick=()=>showTopic(index); topicList.appendChild(card); }); 
+         function showTopic(index){ const data=tests[index]; document
+         .getElementById("welcomeScreen").style.display="none"; document
+         .getElementById("videoSection").style.display="block"; document
+         .getElementById("videoFrame").src=data.video; document
+         .getElementById("topicTitle").textContent=data.title; document
+         .getElementById("topicDescription").textContent=data.description;
+         
+         const learnList=document
+         .getElementById("learnList"); learnList.innerHTML=""; data.learn.forEach(point=>{ const li=document
+         .createElement("li"); li.textContent=point; learnList.appendChild(li); }); document.querySelectorAll(".topic-card")
+         .forEach(card=>{ card.classList.remove("active"); }); document.querySelectorAll(".topic-card")[index].classList.add("active"); } 
+         
+         </script>
+
+</body> 
+
+
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html lang="en">
+ <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BodyAtlas - 🧬 Processes Learning Hub</title>
+<style> *{ margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif; } 
+body{ background:linear-gradient(135deg,#101c39,#32435f); height:100vh; overflow:hidden; color:white; } 
+.container{ display:flex; height:100vh; } /* Sidebar */ 
+.sidebar{ width:280px; background:rgba(36, 4, 4, 0.08); backdrop-filter:blur(12px); border-right:1px solid rgba(255,255,255,0.1); padding:20px; overflow-y:auto; } 
+.back-btn{ display:block; width:100%; padding:12px; margin-bottom:20px; border:none; border-radius:12px; cursor:pointer; font-size:15px; font-weight:bold; background:rgba(255,255,255,0.12); color:white; transition:.3s; } 
+.back-btn:hover{ transform:translateY(-2px); background:rgba(255,255,255,0.18); } .sidebar h2{ margin-bottom:20px; text-align:center; } 
+.topic-card{ background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.1); padding:15px; border-radius:16px; margin-bottom:12px; cursor:pointer; transition:.3s; }
+ .topic-card:hover{ transform:translateY(-3px); background:rgba(255,255,255,0.15); } 
+ .topic-card.active{ border:1px solid #38bdf8; box-shadow:0 0 15px rgba(56,189,248,0.5); } 
+
+ /* Main Content */ 
+ .main{ flex:1; padding:30px; overflow-y:auto; } 
+ .welcome{ height:100%; display:flex; justify-content:center; align-items:center; text-align:center; flex-direction:column; } 
+ .welcome h1{ font-size:42px; margin-bottom:15px; } .welcome p{ font-size:18px; opacity:0.8; } 
+ .video-section{ display:none; } 
+ .video-container{ width:100%; aspect-ratio:16/9; background:#000; border-radius:20px; overflow:hidden; margin-bottom:25px; } 
+ .video-container iframe{ width:100%; height:100%; border:none; } 
+ .info-card{ background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.1); padding:25px; border-radius:20px; backdrop-filter:blur(10px); }
+  .info-card h1{ margin-bottom:15px; } 
+  .info-card p{ line-height:1.7; margin-bottom:20px; }
+   .learn-list li{ margin-left:20px; margin-bottom:10px; } @media(max-width:900px){
+     .container{ flex-direction:column; } 
+     .sidebar{ width:100%; height:250px; } 
+     .main{ height:calc(100vh - 250px); } } 
+     </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="sidebar">
+
+<button class="back-btn" onclick="window.location.href='howitworks.html'"> ← Back to Health Lab </button><h2>🧬 Processes</h2>
+
+<div id="topicList"></div>
+
+</div>
+
+<div class="main">
+
+<div class="welcome" id="welcomeScreen"> <h1>🧬 Processes Learning Hub</h1> <p>Select a process from the sidebar to begin learning.</p> </div>
+
+<div class="video-section" id="videoSection">
+
+<div class="video-container"> <iframe
+id="videoFrame"
+src=""
+allowfullscreen
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+</iframe> </div>
+
+<div class="info-card">
+
+<h1 id="topicTitle"></h1>
+
+<p id="topicDescription"></p>
+
+<h3>📚 What You'll Learn</h3> <br>
+
+<ul class="learn-list" id="learnList"></ul>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+  const processes = [
+
+{
+title:"Digestion",
+video:"https://www.youtube.com/embed/_T_vmcLyTzI",
+description:"Learn about the digestion process, the body's way of breaking down food.",
+learn:[
+"What digestion is",
+"Stages of digestion",
+"Organs involved",
+"Importance of proper digestion"
+]
+},
+
+
+
+{
+title:"blood circulation",
+video:"https://www.youtube.com/embed/CWFyxn0qDEU",
+description:"Learn about the process of blood circulation in the human body.",
+learn:[
+"What blood circulation is",
+"Pathways of blood flow",
+"Organs involved",
+"Importance of proper blood circulation"
+]
+},
+
+
+{
+title:"respiration",
+video:"https://www.youtube.com/embed/nCxN-k9bK5w",
+description:"Learn about the process of respiration in the human body.",
+learn:[
+"What respiration is",
+"Stages of respiration",
+"Organs involved",
+"Importance of proper respiration"
+]
+},
+
+
+{
+title:"immune response",
+video:"https://www.youtube.com/embed/lXfEK8G8CUI",
+description:"Learn about the immune system and its role in defending the body against pathogens.",
+learn:[
+"What the immune system is",
+"Types of immune responses",
+"Organs and cells involved",
+"Importance of a healthy immune system"
+]
+},
+
+
+
+
+{
+title:"nerve signaling",
+video:"https://www.youtube.com/embed/hGDvvUNU-cw",
+description:"Discover how nerve signaling works in the human body.",
+learn:[
+"How nerve signaling works",
+"Types of nerve signals",
+"Organs and cells involved",
+"Importance of proper nerve signaling"
+]
+},
+
+
+{
+title:"hormone regulations ",
+video:"https://www.youtube.com/embed/emvHaBiRY8Q",
+description:"Learn about hormones and thier role in the human body .",
+learn:[
+    "What are hormones?",
+    "Types of hormones",
+    "Organs that produce hormones",
+    "Importance of hormone regulation"
+]
+},
+
+
+
+{
+title:"Metabolism",
+video:"https://www.youtube.com/embed/pwEmzH-NVVo",
+description:"Learn about metabolism and its role in the human body.",
+learn:[
+"What metabolism is",
+"Types of metabolic processes",
+"Organs involved",
+"Importance of proper metabolism"
+]
+},
+
+];
+
+
+        
+        const topicList = document.getElementById("topicList"); 
+        processes.forEach((item,index)=>{ const card=document.createElement("div");
+         card.className="topic-card";
+         card.innerHTML=item.title; card.onclick=()=>showTopic(index); topicList.appendChild(card); }); 
+         function showTopic(index){ const data=processes[index]; document
+         .getElementById("welcomeScreen").style.display="none"; document
+         .getElementById("videoSection").style.display="block"; document
+         .getElementById("videoFrame").src=data.video; document
+         .getElementById("topicTitle").textContent=data.title; document
+         .getElementById("topicDescription").textContent=data.description;
+         
+         const learnList=document
+         .getElementById("learnList"); learnList.innerHTML=""; data.learn.forEach(point=>{ const li=document
+         .createElement("li"); li.textContent=point; learnList.appendChild(li); }); document.querySelectorAll(".topic-card")
+         .forEach(card=>{ card.classList.remove("active"); }); document.querySelectorAll(".topic-card")[index].classList.add("active"); } 
+         
+         </script>
+
+</body> 
+
+
+</html>
