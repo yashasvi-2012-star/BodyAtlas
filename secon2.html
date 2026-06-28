@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BodyAtlas Challenge Mode</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:url("images (1).jpg") center center/cover no-repeat fixed;
+color:white;
+min-height:100vh;
+overflow-x:hidden;
+}
+
+/* HEADER */
+
+header{
+height:70px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 30px;
+background:#1e2e44;
+border-bottom:1px solid rgba(0, 179, 255, 0.3);
+}
+
+.logo{
+font-size:25px;
+font-weight:bold;
+color:#00d7fd;
+}
+
+.title{
+font-size:28px;
+font-weight:bold;
+letter-spacing:2px;
+}
+
+#datetime{
+font-size:15px;
+opacity:.8;
+}
+
+/* DASHBOARD */
+
+.dashboard{
+width:95%;
+margin:20px auto;
+}
+
+/* STATS */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:15px;
+margin-bottom:20px;
+}
+
+.stat{
+background:#113546;
+padding:18px;
+border-radius:15px;
+text-align:center;
+border:1px solid rgba(0,180,255,.2);
+}
+
+.label{
+font-size:13px;
+opacity:.7;
+margin-bottom:6px;
+}
+
+.value{
+font-size:22px;
+font-weight:bold;
+}
+
+.timer{
+border:2px solid rgb(14, 80, 80);
+}
+
+/* QUESTION */
+
+.questionBox{
+background:#0e1f33;
+padding:25px;
+border-radius:20px;
+text-align:center;
+margin-bottom:20px;
+}
+
+.questionBox h2{
+font-size:28px;
+color:#0ec3df;
+}
+
+.questionBox p{
+margin-top:15px;
+font-size:23px;
+}
+
+/* VIEWER */
+
+.viewer{
+background:#030e1a;
+border-radius:20px;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:30px;
+margin-bottom:20px;
+}
+
+.body-viewer{
+display:flex;
+justify-content:center;
+align-items:center;
+width:100%;
+}
+
+.body-container{
+position:relative;
+display:inline-block;
+width:min(260px, 90vw);
+}
+
+.body-img{
+width:100%;
+height:auto;
+display:block;
+pointer-events:none;
+user-select:none;
+}
+
+
+/* HOTSPOTS */
+.hotspot{
+position:absolute;
+width:18px;
+height:18px;
+border-radius:50%;
+cursor:pointer;
+transition:.3s;
+animation:pulse 2s infinite;
+border:2px solid white;
+}
+
+.hotspot:hover{
+transform:scale(1.4);
+}
+
+.hotspot.active{
+animation:none;
+background:#ffbb00;
+border:2px solid white;
+opacity:1;
+transform:scale(1.8);
+box-shadow:
+0 0 15px #56800a,
+0 0 30px #106b41,
+0 0 60px #146d52,
+0 0 90px #126e48;
+z-index:100;
+}
+
+.correct{
+background:#16ff73 !important;
+box-shadow:
+0 0 20px #16ff73,
+0 0 40px #16ff73 !important;
+animation:none !important;
+}
+
+.wrong{
+background:#ff3030 !important;
+box-shadow:
+0 0 20px red,
+0 0 40px red !important;
+animation:none !important;
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+opacity:1;
+}
+
+50%{
+transform:scale(1.3);
+opacity:.7;
+}
+
+100%{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
+/* FRONT HOTSPOTS */
+/* ORGAN COLORS */
+/* FRONT HOTSPOTS (Responsive %) */
+
+.brain{
+top:3.3%;
+left:46%;
+transform:translate(-50%,-50%);
+}
+
+.heart{
+top:23.2%;
+left:46.5%;
+transform:translate(-50%,-50%);
+}
+
+.lungs{
+top:23.5%;
+left:39%;
+transform:translate(-50%,-50%);
+}
+
+.liver{
+top:29.5%;
+left:38.5%;
+transform:translate(-50%,-50%);
+}
+
+.stomach{
+top:30.2%;
+left:51.1%;
+transform:translate(-50%,-50%);
+}
+
+.pancreas{
+top:30.4%;
+left:44%;
+transform:translate(-50%,-50%);
+}
+
+.smallIntestine{
+top:40.6%;
+left:45%;
+transform:translate(-50%,-50%);
+}
+
+.largeIntestine{
+top:36.6%;
+left:53%;
+transform:translate(-50%,-50%);
+}
+
+.bladder{
+top:47.3%;
+left:46%;
+transform:translate(-50%,-50%);
+}
+
+.thyroid{
+top:17%;
+left:46%;
+transform:translate(-50%,-50%);
+}
+
+.trachea{
+top:12.6%;
+left:46%;
+transform:translate(-50%,-50%);
+}
+
+.esophagus{
+top:15%;
+left:46%;
+transform:translate(-50%,-50%);
+}
+
+.bloodvessels{
+top:40.4%;
+left:73%;
+transform:translate(-50%,-50%);
+}
+/* REWARD PANEL */
+
+.rewardPanel{
+background:#324357;
+padding:25px;
+border-radius:20px;
+}
+
+.rewardPanel h2{
+margin-bottom:20px;
+color:#00d8ff;
+}
+
+.rule{
+display:flex;
+justify-content:space-between;
+padding:14px 0;
+font-size:18px;
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.correctText{
+color:#5CFF7D;
+}
+
+.bonus{
+color:#FFD95E;
+}
+
+.combo{
+color:#00d8ff;
+}
+
+.wrongText{
+color:#ff6161;
+}
+
+.timeout{
+color:#ff9f43;
+}
+
+.danger{
+color:red;
+animation:blink .8s infinite;
+}
+
+@keyframes blink{
+
+50%{
+opacity:.3;
+}
+
+}
+
+/* =======================================================
+POPUP OVERLAY
+======================================================= */
+
+.popupOverlay{
+
+position:fixed;
+
+left:0;
+top:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,.55);
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+visibility:hidden;
+
+opacity:0;
+
+transition:.25s;
+
+backdrop-filter:blur(4px);
+
+z-index:9999;
+
+}
+
+/* =======================================================
+WINDOW
+======================================================= */
+
+.popupWindow{
+
+width:430px;
+
+max-width:90%;
+
+padding:30px;
+
+border-radius:20px;
+
+background:rgba(20,20,30,.95);
+
+border:2px solid cyan;
+
+box-shadow:
+0 0 25px cyan;
+
+text-align:center;
+
+transform:scale(.75);
+
+transition:.25s;
+
+}
+
+/* =======================================================
+SHOW
+======================================================= */
+
+.popupOverlay.show{
+
+visibility:visible;
+
+opacity:1;
+
+}
+
+.popupOverlay.show .popupWindow{
+
+transform:scale(1);
+
+}
+
+/* =======================================================
+TITLE
+======================================================= */
+
+.popupTitle{
+
+font-size:30px;
+
+font-weight:bold;
+
+margin-bottom:15px;
+
+color:white;
+
+}
+
+/* =======================================================
+MESSAGE
+======================================================= */
+
+.popupMessage{
+
+font-size:19px;
+
+line-height:1.6;
+
+margin-bottom:25px;
+
+color:white;
+
+}
+
+/* =======================================================
+BUTTON
+======================================================= */
+
+.popupButton{
+
+padding:12px 35px;
+
+border:none;
+
+border-radius:12px;
+
+background:#00c8ff;
+
+color:white;
+
+font-size:18px;
+
+cursor:pointer;
+
+transition:.2s;
+
+margin:6px;
+
+}
+
+.popupButton:hover{
+
+transform:scale(1.05);
+
+}
+
+/* =======================================================
+SCORE ANIMATION
+======================================================= */
+
+.scorePop{
+
+animation:scorePop .35s;
+
+}
+
+@keyframes scorePop{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.35);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+/* =======================================================
+TIMER WARNING
+======================================================= */
+
+.timerPulse{
+
+animation:timerPulse .7s infinite;
+
+}
+
+@keyframes timerPulse{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.25);
+
+text-shadow:
+
+0 0 15px red,
+
+0 0 30px red;
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+#question{
+
+transition:.25s;
+
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+🧬 BODYATLAS
+</div>
+
+<div class="title">
+🎯 CHALLENGE MODE
+</div>
+
+<div id="datetime"></div>
+
+</header>
+
+<div class="dashboard">
+
+<div class="stats">
+
+<div class="stat">
+<div class="label">LEVEL</div>
+<div class="value" id="level">Easy</div>
+</div>
+
+<div class="stat">
+<div class="label">TOPIC</div>
+<div class="value" id="topic">Random</div>
+</div>
+
+<div class="stat">
+<div class="label">SCORE</div>
+<div class="value" id="score">0</div>
+</div>
+
+<div class="stat timer">
+<div class="label">TIME</div>
+<div class="value" id="timer">20</div>
+</div>
+
+<div class="stat">
+<div class="label">QUESTION</div>
+<div class="value" id="questionNo">1 / 10</div>
+</div>
+
+<div class="stat">
+<div class="label">COMBO</div>
+<div class="value" id="combo">0</div>
+</div>
+
+</div>
+
+<div class="questionBox">
+
+<h2>QUESTION</h2>
+
+<p id="question">
+
+Which organ pumps blood throughout the body?
+
+</p>
+
+</div>
+
+
+<!-- VIEWER -->
+
+<div class="viewer">
+
+<div class="body-viewer">
+
+<div class="body-container">
+
+<img src="frontview copy.png" class="body-img">
+
+<div class="hotspot brain" onclick="checkAnswer('brain')"></div>
+
+<div class="hotspot heart" onclick="checkAnswer('heart')"></div>
+
+<div class="hotspot lungs" onclick="checkAnswer('lungs')"></div>
+<div class="hotspot liver"
+onclick="checkAnswer('liver')"></div>
+
+<div class="hotspot stomach"
+onclick="checkAnswer('stomach')"></div>
+
+<div class="hotspot pancreas"
+onclick="checkAnswer('pancreas')"></div>
+
+<div class="hotspot smallIntestine"
+onclick="checkAnswer('smallIntestine')"></div>
+
+<div class="hotspot largeIntestine"
+onclick="checkAnswer('largeIntestine')"></div>
+
+<div class="hotspot bladder"
+onclick="checkAnswer('bladder')"></div>
+
+<div class="hotspot bloodvessels"
+onclick="checkAnswer('bloodvessels')"></div>
+
+<div class="hotspot thyroid"
+onclick="checkAnswer('thyroid')"></div>
+
+<div class="hotspot trachea"
+onclick="checkAnswer('trachea')"></div>
+
+<div class="hotspot esophagus"
+onclick="checkAnswer('esophagus')"></div>
+</div>
+
+<div class="rewardPanel">
+
+<h2>Challenge Rules</h2>
+
+<div class="rule">
+<span class="correctText">✅ Correct Answer</span>
+<span>+20</span>
+</div>
+
+<div class="rule">
+<span class="bonus">⚡ Fast Answer</span>
+<span>+5</span>
+</div>
+
+<div class="rule">
+<span class="combo">🔥 Combo Bonus</span>
+<span>+10</span>
+</div>
+
+<div class="rule">
+<span class="wrongText">❌ Wrong Answer</span>
+<span>-10</span>
+</div>
+
+<div class="rule">
+<span class="timeout">⏰ Time Out</span>
+<span>0</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- CHALLENGE POPUP WINDOW -->
+<!-- ===================================================== -->
+
+<div id="popupOverlay" class="popupOverlay">
+
+<div id="popupWindow" class="popupWindow">
+
+<div id="popupTitle" class="popupTitle">
+Correct
+</div>
+
+<div id="popupMessage" class="popupMessage">
+Message
+</div>
+
+<button id="popupButton" class="popupButton">
+Continue
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- ===================================================== -->
+<!-- RESULT WINDOW -->
+<!-- ===================================================== -->
+
+<div id="resultOverlay" class="popupOverlay">
+
+<div id="resultWindow" class="popupWindow">
+
+<h2>🏆 Challenge Complete</h2>
+
+<div id="resultContent"></div>
+
+<button onclick="playAgain()" class="popupButton">
+Play Again
+</button>
+
+<button onclick="goHome()" class="popupButton">
+Main Menu
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+// ======================================================
+// BODYATLAS CHALLENGE MODE ENGINE
+// Version : V1
+// ======================================================
+
+
+
+// ======================================================
+// LIVE CLOCK
+// ======================================================
+
+function updateTime(){
+
+const now=new Date();
+
+document.getElementById("datetime").innerHTML=
+now.toLocaleDateString()+" | "+now.toLocaleTimeString();
+
+}
+
+updateTime();
+
+setInterval(updateTime,1000);
+
+
+
+// ======================================================
+// READ SETTINGS FROM FRONT PAGE
+// ======================================================
+
+const params=new URLSearchParams(window.location.search);
+
+const selectedDifficulty=params.get("difficulty") || "Easy";
+
+const selectedTopic=params.get("topic") || "Random";
+
+document.getElementById("level").innerHTML=selectedDifficulty;
+document.getElementById("topic").innerHTML=selectedTopic;
+
+
+
+// ======================================================
+// DIFFICULTY DATABASE
+// ======================================================
+
+const difficultySettings={
+
+Easy:{
+timer:20,
+questions:10,
+correct:20,
+wrong:-10,
+fastBonus:5,
+comboBonus:10,
+fastTime:10
+},
+
+Medium:{
+timer:15,
+questions:10,
+correct:25,
+wrong:-10,
+fastBonus:10,
+comboBonus:15,
+fastTime:8
+},
+
+Hard:{
+timer:10,
+questions:15,
+correct:30,
+wrong:-15,
+fastBonus:15,
+comboBonus:20,
+fastTime:5
+}
+
+};
+
+const game=difficultySettings[selectedDifficulty];
+
+
+
+// ======================================================
+// TOPIC DATABASE
+// ======================================================
+
+const topicDatabase={
+
+Random:[],
+
+Digestive:[
+"liver",
+"stomach",
+"pancreas",
+"smallIntestine",
+"largeIntestine",
+"esophagus"
+],
+
+Respiratory:[
+"lungs",
+"trachea"
+],
+
+Circulatory:[
+"heart",
+"bloodvessels"
+],
+
+Nervous:[
+"brain"
+],
+
+Urinary:[
+"bladder"
+],
+
+Endocrine:[
+"thyroid"
+]
+
+};
+
+
+
+// ======================================================
+// GAME VARIABLES
+// ======================================================
+
+let score=0;
+
+let combo=0;
+
+let timer=null;
+
+let timeLeft=game.timer;
+
+let currentQuestionIndex=0;
+
+let correctAnswers=0;
+
+let wrongAnswers=0;
+
+let selectedQuestions=[];
+
+let currentQuestion=null;
+
+
+
+// ======================================================
+// QUESTION DATABASE
+// ======================================================
+
+const allQuestions=[
+
+{
+
+id:1,
+
+question:"Which organ pumps blood throughout the body?",
+
+answer:"heart",
+
+topic:"Circulatory",
+
+difficulty:"Easy",
+
+explanation:"The heart pumps oxygen-rich blood throughout the body."
+
+},
+
+{
+
+id:2,
+
+question:"Which organ exchanges oxygen and carbon dioxide?",
+
+answer:"lungs",
+
+topic:"Respiratory",
+
+difficulty:"Easy",
+
+explanation:"The lungs exchange oxygen and carbon dioxide."
+
+},
+
+{
+
+id:3,
+
+question:"Which organ produces insulin?",
+
+answer:"pancreas",
+
+topic:"Digestive",
+
+difficulty:"Easy",
+
+explanation:"The pancreas produces insulin."
+
+},
+
+{
+
+id:4,
+
+question:"Which organ controls metabolism?",
+
+answer:"thyroid",
+
+topic:"Endocrine",
+
+difficulty:"Medium",
+
+explanation:"The thyroid gland regulates metabolism."
+
+},
+
+{
+
+id:5,
+
+question:"Which organ stores urine?",
+
+answer:"bladder",
+
+topic:"Urinary",
+
+difficulty:"Easy",
+
+explanation:"The bladder stores urine."
+
+},
+
+{
+
+id:6,
+
+question:"Which organ absorbs most nutrients?",
+
+answer:"smallIntestine",
+
+topic:"Digestive",
+
+difficulty:"Medium",
+
+explanation:"Most nutrients are absorbed in the small intestine."
+
+},
+
+{
+
+id:7,
+
+question:"Which organ detoxifies blood?",
+
+answer:"liver",
+
+topic:"Digestive",
+
+difficulty:"Medium",
+
+explanation:"The liver removes toxins from the bloodstream."
+
+},
+
+{
+
+id:8,
+
+question:"Which organ carries food into the stomach?",
+
+answer:"esophagus",
+
+topic:"Digestive",
+
+difficulty:"Easy",
+
+explanation:"The esophagus transports swallowed food."
+
+},
+
+{
+
+id:9,
+
+question:"Which organ carries air into the lungs?",
+
+answer:"trachea",
+
+topic:"Respiratory",
+
+difficulty:"Easy",
+
+explanation:"The trachea transports air to the lungs."
+
+},
+
+{
+
+id:10,
+
+question:"Which organ controls the entire nervous system?",
+
+answer:"brain",
+
+topic:"Nervous",
+
+difficulty:"Easy",
+
+explanation:"The brain is the control center of the nervous system."
+
+},
+
+{
+
+id:11,
+
+question:"Which digestive organ stores glycogen?",
+
+answer:"liver",
+
+topic:"Digestive",
+
+difficulty:"Hard",
+
+explanation:"The liver stores glycogen for energy."
+
+},
+
+{
+
+id:12,
+
+question:"Which organ releases thyroid hormones?",
+
+answer:"thyroid",
+
+topic:"Endocrine",
+
+difficulty:"Hard",
+
+explanation:"The thyroid releases T3 and T4 hormones."
+
+},
+
+{
+
+id:13,
+
+question:"Which organ receives oxygen-rich blood before pumping it through the body?",
+
+answer:"heart",
+
+topic:"Circulatory",
+
+difficulty:"Hard",
+
+explanation:"The heart pumps oxygenated blood throughout the body."
+
+}
+
+];
+
+
+// ======================================================
+// ORGAN DISPLAY NAMES
+// ======================================================
+
+const organNames = {
+
+heart:"Heart",
+
+lungs:"Lungs",
+
+brain:"Brain",
+
+thyroid:"Thyroid Gland",
+
+trachea:"Trachea",
+
+esophagus:"Esophagus",
+
+liver:"Liver",
+
+stomach:"Stomach",
+
+pancreas:"Pancreas",
+
+smallIntestine:"Small Intestine",
+
+largeIntestine:"Large Intestine",
+
+bladder:"Bladder",
+
+bloodvessels:"Blood Vessels"
+
+};
+// ======================================================
+// PREPARE QUESTIONS
+// ======================================================
+
+function prepareQuestions(){
+
+let pool=[...allQuestions];
+
+
+
+if(selectedTopic!=="Random"){
+
+pool=pool.filter(q=>q.topic===selectedTopic);
+
+}
+
+
+
+if(selectedDifficulty==="Easy"){
+
+pool=pool.filter(q=>q.difficulty==="Easy");
+
+}
+
+else if(selectedDifficulty==="Medium"){
+
+pool=pool.filter(q=>
+
+q.difficulty==="Easy" ||
+
+q.difficulty==="Medium"
+
+);
+
+}
+
+
+shuffle(pool);
+
+selectedQuestions = pool.slice(
+    0,
+    Math.min(game.questions, pool.length)
+);
+
+if(selectedQuestions.length===0){
+
+alert("No questions found.");
+
+return;
+
+}
+
+loadQuestion();
+
+}
+
+// ======================================================
+// LOAD QUESTION
+// ======================================================
+function loadQuestion(){
+
+clearInterval(timer);
+
+if(currentQuestionIndex>=selectedQuestions.length){
+
+finishGame();
+
+return;
+
+}
+
+currentQuestion=selectedQuestions[currentQuestionIndex];
+
+document.getElementById("question").style.opacity=0;
+
+setTimeout(function(){
+
+document.getElementById("question").innerHTML=currentQuestion.question;
+
+document.getElementById("question").style.opacity=1;
+
+},200);
+
+document.getElementById("questionNo").innerHTML=
+
+(currentQuestionIndex+1)+" / "+selectedQuestions.length;
+
+timeLeft=game.timer;
+
+document.getElementById("timer").innerHTML=timeLeft;
+
+document.getElementById("timer").classList.remove("danger");
+document.getElementById("timer").classList.remove("timerPulse");
+
+startTimer();
+
+}
+
+// ======================================================
+// TIMER
+// ======================================================
+
+// ======================================================
+// TIMER
+// ======================================================
+
+function startTimer(){
+
+clearInterval(timer);
+
+timer=setInterval(function(){
+
+timeLeft--;
+
+document.getElementById("timer").innerHTML=timeLeft;
+
+if(timeLeft<=5){
+
+document.getElementById("timer").classList.add("danger");
+document.getElementById("timer").classList.add("timerPulse");
+
+soundTime();
+
+}else{
+
+document.getElementById("timer").classList.remove("timerPulse");
+
+}
+
+if(timeLeft<=0){
+
+clearInterval(timer);
+
+combo=0;
+wrongAnswers++;
+
+document.getElementById("combo").innerHTML=combo;
+
+showPopup(
+
+"⏰ Time's Up!",
+
+"The correct answer was <b>"+organNames[currentQuestion.answer]+"</b>.",
+
+function(){
+
+nextQuestion();
+
+}
+
+);
+
+}
+
+},1000);
+
+}
+
+
+// ======================================================
+// HOTSPOT CLICK
+// ======================================================
+
+function checkAnswer(clicked){
+
+clearInterval(timer);
+
+const correct=(clicked===currentQuestion.answer);
+
+if(correct){
+
+correctAnswer(clicked);
+
+}else{
+
+wrongAnswer(clicked);
+
+}
+
+}
+
+
+// ======================================================
+// HIGHLIGHT HOTSPOT
+// ======================================================
+
+function highlightHotspot(organ, result){
+
+    // Remove previous highlights
+    document.querySelectorAll(".hotspot").forEach(function(h){
+
+        h.classList.remove("correct");
+        h.classList.remove("wrong");
+
+    });
+
+    // Find the clicked hotspot
+    const hotspot = document.querySelector("." + organ);
+
+    if(!hotspot) return;
+
+    hotspot.classList.add(result);
+
+}
+// ======================================================
+// CORRECT ANSWER
+// ======================================================
+// ======================================================
+// CORRECT ANSWER
+// ======================================================
+
+function correctAnswer(clicked){
+
+soundCorrect();
+
+let gained=game.correct;
+
+if(timeLeft>=game.fastTime){
+
+gained+=game.fastBonus;
+
+}
+
+combo++;
+
+if(combo>=3){
+
+gained+=game.comboBonus;
+
+}
+
+score+=gained;
+
+correctAnswers++;
+
+updateScore(score);
+
+document.getElementById("combo").innerHTML=combo;
+
+highlightHotspot(clicked,"correct");
+
+showPopup(
+
+"✅ Correct!",
+
+currentQuestion.explanation+
+
+"<br><br><b>+"+gained+" Points</b>",
+
+function(){
+
+nextQuestion();
+
+}
+
+);
+
+}
+
+// ======================================================
+// WRONG ANSWER
+// ======================================================
+// ======================================================
+// WRONG ANSWER
+// ======================================================
+
+function wrongAnswer(clicked){
+
+soundWrong();
+
+score+=game.wrong;
+
+wrongAnswers++;
+
+combo=0;
+
+updateScore(score);
+
+document.getElementById("combo").innerHTML=combo;
+
+highlightHotspot(clicked,"wrong");
+
+showPopup(
+
+"❌ Wrong",
+
+"Correct Answer:<br><b>"+organNames[currentQuestion.answer]+
+"</b><br><br>"+currentQuestion.explanation,
+
+function(){
+
+nextQuestion();
+
+}
+
+);
+
+}
+// ======================================================
+// NEXT QUESTION
+// ======================================================
+// ======================================================
+// NEXT QUESTION
+// ======================================================
+
+function nextQuestion(){
+
+document.querySelectorAll(".hotspot").forEach(function(h){
+
+h.classList.remove("correct");
+h.classList.remove("wrong");
+
+});
+
+document.getElementById("timer").classList.remove("danger");
+document.getElementById("timer").classList.remove("timerPulse");
+
+currentQuestionIndex++;
+
+setTimeout(loadQuestion,300);
+
+}
+
+// ======================================================
+// FINISH GAME
+// ======================================================
+
+function finishGame(){
+
+clearInterval(timer);
+
+soundVictory();
+
+let total=selectedQuestions.length;
+
+let accuracy=Math.round((correctAnswers/total)*100);
+
+let stars="⭐";
+
+if(accuracy>=90){
+
+stars="⭐⭐⭐⭐⭐";
+
+}
+
+else if(accuracy>=75){
+
+stars="⭐⭐⭐⭐";
+
+}
+
+else if(accuracy>=60){
+
+stars="⭐⭐⭐";
+
+}
+
+else if(accuracy>=40){
+
+stars="⭐⭐";
+
+}
+
+document.getElementById("resultContent").innerHTML=`
+
+<h3>${stars}</h3>
+
+<p><b>Difficulty :</b> ${selectedDifficulty}</p>
+
+<p><b>Topic :</b> ${selectedTopic}</p>
+
+<p><b>Score :</b> ${score}</p>
+
+<p><b>Correct :</b> ${correctAnswers}</p>
+
+<p><b>Wrong :</b> ${wrongAnswers}</p>
+
+<p><b>Accuracy :</b> ${accuracy}%</p>
+
+`;
+
+document
+.getElementById("resultOverlay")
+.classList.add("show");
+
+}
+
+// ======================================================
+// RESET GAME
+// ======================================================
+
+function resetGame(){
+
+clearInterval(timer);
+
+score=0;
+
+combo=0;
+
+correctAnswers=0;
+
+wrongAnswers=0;
+
+currentQuestionIndex=0;
+
+selectedQuestions=[];
+
+currentQuestion=null;
+
+timeLeft=game.timer;
+
+document.getElementById("score").innerHTML=0;
+
+document.getElementById("combo").innerHTML=0;
+
+document.getElementById("timer").innerHTML=game.timer;
+
+document.getElementById("questionNo").innerHTML=
+"1 / "+game.questions;
+
+document.querySelectorAll(".hotspot").forEach(function(h){
+
+h.classList.remove("correct");
+h.classList.remove("wrong");
+
+});
+
+}
+
+
+
+// ======================================================
+// SHUFFLE FUNCTION
+// ======================================================
+
+function shuffle(array){
+
+for(let i=array.length-1;i>0;i--){
+
+const j=Math.floor(Math.random()*(i+1));
+
+[array[i],array[j]]=[array[j],array[i]];
+
+}
+
+return array;
+
+}
+
+// ======================================================
+// SOUND ENGINE
+// ======================================================
+
+// Create Audio Context
+const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+const audio = new AudioContextClass();
+
+// Unlock audio after first user interaction
+function unlockAudio(){
+
+    if(audio.state === "suspended"){
+
+        audio.resume();
+
+    }
+
+    document.removeEventListener("click", unlockAudio);
+    document.removeEventListener("keydown", unlockAudio);
+    document.removeEventListener("touchstart", unlockAudio);
+
+}
+
+// Listen for the first interaction
+document.addEventListener("click", unlockAudio);
+document.addEventListener("keydown", unlockAudio);
+document.addEventListener("touchstart", unlockAudio);
+
+
+// ======================================================
+// PLAY TONE
+// ======================================================
+
+function playTone(freq, duration, type = "sine"){
+
+    // Safety check
+    if(audio.state === "suspended") return;
+
+    const oscillator = audio.createOscillator();
+    const gainNode = audio.createGain();
+
+    oscillator.type = type;
+    oscillator.frequency.value = freq;
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audio.destination);
+
+    gainNode.gain.setValueAtTime(0.08, audio.currentTime);
+
+    gainNode.gain.exponentialRampToValueAtTime(
+        0.0001,
+        audio.currentTime + duration
+    );
+
+    oscillator.start();
+    oscillator.stop(audio.currentTime + duration);
+
+}
+
+// ======================================================
+// SOUND EFFECTS
+// ======================================================
+
+function soundCorrect(){
+
+    playTone(750,.12);
+
+    setTimeout(function(){
+
+        playTone(950,.12);
+
+    },120);
+
+}
+
+function soundWrong(){
+
+    playTone(240,.25,"sawtooth");
+
+}
+
+function soundClick(){
+
+    playTone(500,.05);
+
+}
+
+function soundTime(){
+
+    playTone(300,.08);
+
+}
+
+function soundVictory(){
+
+    playTone(600,.12);
+
+    setTimeout(function(){
+
+        playTone(800,.12);
+
+    },140);
+
+    setTimeout(function(){
+
+        playTone(1000,.20);
+
+    },280);
+
+}
+// ======================================================
+// POPUP WINDOW
+// ======================================================
+
+let popupCallback=null;
+
+function showPopup(title,message,callback){
+
+popupCallback=callback;
+
+document.getElementById("popupTitle").innerHTML=title;
+
+document.getElementById("popupMessage").innerHTML=message;
+
+document
+.getElementById("popupOverlay")
+.classList.add("show");
+
+}
+
+document
+.getElementById("popupButton")
+.onclick=function(){
+
+soundClick();
+
+document
+.getElementById("popupOverlay")
+.classList.remove("show");
+
+setTimeout(function(){
+
+if(popupCallback){
+
+popupCallback();
+
+}
+
+},250);
+
+};
+
+// ======================================================
+// SCORE ANIMATION
+// ======================================================
+
+function updateScore(newScore){
+
+const scoreElement=document.getElementById("score");
+
+const old=parseInt(scoreElement.innerHTML);
+
+const diff=newScore-old;
+
+let current=old;
+
+const step=diff>0?1:-1;
+
+const interval=setInterval(function(){
+
+current+=step;
+
+scoreElement.innerHTML=current;
+
+if(current===newScore){
+
+clearInterval(interval);
+
+scoreElement.classList.add("scorePop");
+
+setTimeout(function(){
+
+scoreElement.classList.remove("scorePop");
+
+},350);
+
+}
+
+},15);
+
+}
+
+// ======================================================
+// RESULT BUTTONS
+// ======================================================
+
+function playAgain(){
+
+location.reload();
+
+}
+
+function goHome(){
+
+window.location.href="fronchall.html";
+
+}
+
+
+// ======================================================
+// START GAME
+// ======================================================
+
+prepareQuestions();
+
+
+// ======================================================
+// END OF BODYATLAS CHALLENGE ENGINE V1
+// ======================================================
+
+
+</script>
+</body>
+
+</html>

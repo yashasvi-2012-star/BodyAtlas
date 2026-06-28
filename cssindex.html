@@ -1,0 +1,214 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Georgia',serif;
+}
+
+body{
+background:#c8ae7d;
+color:#3b2a18;
+overflow-x:hidden;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+
+background:
+linear-gradient(
+rgba(214,190,150,.65),
+rgba(184,154,110,.85)
+),
+url('bg2.jpg');
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+display:flex;
+flex-direction:column;
+}
+
+/* HEADER */
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:70px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+gap:35px;
+
+background:rgba(120,85,50,.88);
+
+border-bottom:3px solid #5b3b1e;
+
+box-shadow:
+0 3px 12px rgba(0,0,0,.25);
+
+z-index:1000;
+
+font-size:1rem;
+letter-spacing:1px;
+color:#f4e3c1;
+text-transform:uppercase;
+}
+
+/* HERO CONTENT */
+
+.hero-content{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:120px 20px 40px;
+}
+
+.hero-inner{
+max-width:900px;
+}
+
+.hero h1{
+font-size:6rem;
+margin-bottom:20px;
+
+color:#4b2f17;
+
+font-family:'Times New Roman',serif;
+
+letter-spacing:6px;
+text-transform:uppercase;
+
+text-shadow:
+2px 2px 0 rgba(255,240,210,.35);
+}
+
+.hero h2{
+font-size:2rem;
+font-weight:normal;
+margin-bottom:25px;
+
+color:#5f4225;
+
+font-style:italic;
+}
+
+.hero p{
+font-size:1.15rem;
+line-height:2;
+
+color:#4e3821;
+
+max-width:800px;
+margin:auto;
+}
+
+/* ENTER BUTTON */
+
+.enter-btn{
+margin-top:35px;
+padding:15px 35px;
+
+font-size:1rem;
+
+border:2px solid #5b3b1e;
+
+background:#a67c52;
+
+color:#fff4df;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.3s;
+
+box-shadow:
+3px 3px 0 rgba(0,0,0,.2);
+}
+
+.enter-btn:hover{
+background:#7d5732;
+
+transform:translateY(-2px);
+}
+
+/* ABOUT */
+
+.about{
+padding:100px 10%;
+
+text-align:center;
+
+background:#d4b483;
+
+border-top:4px solid #8b5e34;
+border-bottom:4px solid #8b5e34;
+}
+
+.about h2{
+font-size:3rem;
+margin-bottom:30px;
+
+color:#4b2f17;
+
+letter-spacing:3px;
+text-transform:uppercase;
+}
+
+.about p{
+max-width:900px;
+margin:auto;
+
+font-size:1.1rem;
+line-height:2.1;
+
+color:#4e3821;
+}
+
+/* FOOTER */
+
+footer{
+padding:30px;
+
+text-align:center;
+
+background:#6d4c2f;
+
+border-top:3px solid #4a2d15;
+}
+
+footer p{
+color:#f3dfbc;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+header{
+gap:12px;
+font-size:.75rem;
+padding:0 10px;
+}
+
+.hero h1{
+font-size:3.5rem;
+}
+
+.hero h2{
+font-size:1.3rem;
+}
+
+.about h2{
+font-size:2rem;
+}
+
+}

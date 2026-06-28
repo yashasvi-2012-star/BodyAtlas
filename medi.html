@@ -4,7 +4,13 @@
  <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BodyAtlas - 💊 Medicines Learning Hub</title>
 <style> *{ margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif; } 
-body{ background:linear-gradient(135deg,#101c39,#32435f); height:100vh; overflow:hidden; color:white; } 
+body{
+background:url("imagesy.jpg") center center/cover no-repeat fixed;
+color:white;
+min-height:100vh;
+overflow-x:hidden;
+}
+
 .container{ display:flex; height:100vh; } /* Sidebar */ 
 .sidebar{ width:280px; background:rgba(36, 4, 4, 0.08); backdrop-filter:blur(12px); border-right:1px solid rgba(255,255,255,0.1); padding:20px; overflow-y:auto; } 
 .back-btn{ display:block; width:100%; padding:12px; margin-bottom:20px; border:none; border-radius:12px; cursor:pointer; font-size:15px; font-weight:bold; background:rgba(255,255,255,0.12); color:white; transition:.3s; } 
@@ -45,7 +51,13 @@ body{ background:linear-gradient(135deg,#101c39,#32435f); height:100vh; overflow
 
 <div class="main">
 
-<div class="welcome" id="welcomeScreen"> <h1>🧬 Medicine Learning Hub</h1> <p>Select a medicine from the sidebar to begin learning.</p> </div>
+<div class="welcome" id="welcomeScreen"> <h1>🧬 Medicine Learning Hub</h1>
+   <p>Select a medicine from the sidebar to begin learning.</p> 
+   
+  <P>If you, upon selecting, scroll down a bit you will find a list of things you will learn and see in the video.</P>
+  <p>if the selected video does not play try leloading the page or check your internet connections .</p>
+
+  <p>ENJOY WATCHING THE VIDEO !!</p></div>
 
 <div class="video-section" id="videoSection">
 

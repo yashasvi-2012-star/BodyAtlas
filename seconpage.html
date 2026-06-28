@@ -16,18 +16,23 @@ font-family:'Segoe UI',sans-serif;
 }
 
 body{
-background:#030814;
-color:white;
-height:100vh;
-overflow:hidden;
+    background-image: url("ChatGPT Image Jun 27, 2026, 07_14_35 PM.png"); /* Change path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color: white;
+    height: 100vh;
+    overflow: hidden;
 }
 
 /* HEADER */
 
 header{
 height:70px;
-background:#061224;
-border-bottom:1px solid rgba(0,180,255,.2);
+background:hsl(242, 76%, 10%);
+border-bottom:1px solid rgba(200, 255, 0, 0.164);
 display:flex;
 align-items:center;
 justify-content:space-between;
@@ -44,12 +49,12 @@ gap:15px;
 width:45px;
 height:45px;
 border-radius:50%;
-border:2px solid #00bfff;
+border:2px solid #00c3fff3;
 display:flex;
 align-items:center;
 justify-content:center;
 font-size:22px;
-color:#00bfff;
+color:#00c9ec;
 }
 
 .logo-text h1{
@@ -69,15 +74,6 @@ opacity:.7;
 width:400px;
 }
 
-.search input{
-width:100%;
-padding:12px;
-background:#09182d;
-border:1px solid rgba(0,180,255,.2);
-border-radius:12px;
-color:white;
-outline:none;
-}
 
 #clock{
 font-size:14px;
@@ -96,13 +92,13 @@ height:calc(100vh - 150px);
 .sidebar{
 width:280px;
 padding:15px;
-border-right:1px solid rgba(0,180,255,.15);
+border-right:1px solid rgb(0, 183, 255);
 overflow:auto;
 }
 
 .panel{
-background:#07111f;
-border:1px solid rgba(0,180,255,.2);
+background:hsl(242, 76%, 10%);
+border:1px solid rgba(238, 255, 0, 0.2);
 border-radius:18px;
 padding:15px;
 margin-bottom:15px;
@@ -122,7 +118,7 @@ transition:.3s;
 }
 
 .menu-item:hover{
-background:rgba(0,180,255,.12);
+background:rgba(8, 112, 138, 0.877);
 }
 
 /* VIEWER */
@@ -147,7 +143,7 @@ position:relative;
 }
 
 .body-img{
-height: 640px;
+height: 6400px;
 max-height:80vh;
 }
 
@@ -207,7 +203,7 @@ animation:none;
 
 transform:scale(1.4);
 
-background:#00ffff;
+background:#00fff2;
 
 box-shadow:
 0 0 20px #00ffff,
@@ -247,90 +243,112 @@ z-index:100;
 /* FRONT BODY */
 
 .brain{
-top:20px;
-left:130px;
+top:3.3%;
+left:46%;
+transform:translate(-50%,-50%);
 }
 
 .heart{
-top:140px;
-left:134px;
+top:23.2%;
+left:46.5%;
+transform:translate(-50%,-50%);
 }
 
 .lungs{
-top:145px;
-left:104px;
+top:23.5%;
+left:39%;
+transform:translate(-50%,-50%);
 }
+
 .liver{
-top:170px;
-left:113px;
+top:29.5%;
+left:38.5%;
+transform:translate(-50%,-50%);
 }
 
 .stomach{
-top:190px;
-left:140px;
+top:30.2%;
+left:51.1%;
+transform:translate(-50%,-50%);
 }
 
 .pancreas{
-top:195px;
-left:115px;
+top:30.4%;
+left:44%;
+transform:translate(-50%,-50%);
 }
 
 .smallIntestine{
-top:225px;
-left:130px;
+top:40.6%;
+left:45%;
+transform:translate(-50%,-50%);
 }
 
 .largeIntestine{
-top:225px;
-left:110px;
+top:36.6%;
+left:53%;
+transform:translate(-50%,-50%);
 }
 
 .bladder{
-top:270px;
-left:130px;
+top:47.3%;
+left:46%;
+transform:translate(-50%,-50%);
 }
 
 .thyroid{
-top:75px;
-left:125px;
+top:17%;
+left:46%;
+transform:translate(-50%,-50%);
 }
 
 .trachea{
-top:95px;
-left:125px;
+top:12.6%;
+left:46%;
+transform:translate(-50%,-50%);
 }
 
 .esophagus{
-top:115px;
-left:130px;
+top:15%;
+left:46%;
+transform:translate(-50%,-50%);
 }
 
 .bloodvessels{
-top:195px;
-left:190px;
+top:40.4%;
+left:73%;
+transform:translate(-50%,-50%);
 }
 
 /* BACK BODY */
 
 .spine{
-top:165px;
-left:187px;
+top:35%;
+left:48%;
+transform:translate(-50%,-50%);
 }
+
 
 .kidneys{
-top:195px;
-left:165px;
+top:32%;
+left:55%;
+transform:translate(-50%,-50%);
 }
+
 
 .adrenalGlands{
-top:175px;
-left:165px;
+top:28%;
+left:53%;
+transform:translate(-50%,-50%);
 }
 
+
 .pituitary{
-top:20px;
-left:187px;
+top:5%;
+left:48%;
+transform:translate(-50%,-50%);
 }
+
 
 
 /* INFO PANEL */
@@ -338,7 +356,7 @@ left:187px;
 .info-panel{
 width:340px;
 padding:15px;
-border-left:1px solid rgba(0,180,255,.15);
+border-left:1px solid hsl(242, 76%, 10%);
 
 overflow-y:auto;
 overflow-x:hidden;
@@ -351,8 +369,8 @@ min-height:0;
 }
 
 .organ-card{
-background:#07111f;
-border:1px solid rgba(0,180,255,.2);
+background:hsl(242, 76%, 10%);
+border:1px solid hsl(242, 76%, 10%);
 border-radius:18px;
 padding:20px;
 }
@@ -379,7 +397,7 @@ min-height:100%;
 
 .bottom-dock{
 height:80px;
-background:#061224;
+background:hsl(242, 76%, 10%);
 border-top:1px solid rgba(0,180,255,.15);
 display:flex;
 align-items:center;
@@ -418,6 +436,25 @@ color:white;
 z-index:1000;
 }
 
+.challenge-btn{
+    background:rgba(0,140,255,0.15);
+    border:1px solid rgba(0,170,255,.5);
+    color:#00bfff;
+    padding:10px 20px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    transition:.3s;
+    backdrop-filter:blur(10px);
+}
+
+.challenge-btn:hover{
+    background:#00bfff;
+    color:#04111f;
+    transform:translateY(-2px);
+    box-shadow:0 0 20px rgba(0,170,255,.5);
+}
 </style>
 </head>
 
@@ -438,9 +475,12 @@ z-index:1000;
 
 <div id="clock"></div>
 
-<div class="search">
-<input type="text" placeholder="Search organ, system, disease...">
-</div>
+<!--GAME BUTTON !!! -->
+
+<button class="challenge-btn" onclick="openChallenge()">
+    🏆 Challenge Mode
+</button>
+
 
 </header>
 
@@ -453,10 +493,6 @@ z-index:1000;
 <div class="panel">
 
 <h3>🧪 HEALTH LAB</h3>
-
-
-
-
 
 <div class="menu-item" onclick="window.location.href='howitworks.html'">
 🔬 How Does It Work?
@@ -516,7 +552,7 @@ onclick="showSystem('urinary')">
 
 <div class="body-container">
 
-<img src="frontview copy.png" class="body-img">
+<img src="anatomy_no_background.png" class="body-img">
 
 <div class="hotspot brain" onclick="showOrgan('brain')"></div>
 <div class="hotspot heart" onclick="showOrgan('heart')"></div>
@@ -555,7 +591,7 @@ onclick="showOrgan('esophagus')"></div>
 
 <div class="body-container">
 
-<img src="ChatGPT Image Jun 22, 2026, 11_40_49 AM.png" class="body-img">
+<img src="anatomy_figure_no_bg.png" class="body-img">
 
 <div class="hotspot kidneys" onclick="showOrgan('kidneys')"></div>
 <div class="hotspot spine" onclick="showOrgan('spine')"></div>
@@ -598,7 +634,7 @@ Select an organ hotspot to begin exploring.
 <button class="organ-btn" onclick="showOrgan('stomach')">🍽 Stomach</button>
 <button class="organ-btn" onclick="showOrgan('kidneys')">🫘 Kidneys</button>
 <button class="organ-btn" onclick="showOrgan('pancreas')">🧪 Pancreas</button>
-<button class="organ-btn" onclick="showOrgan('bloodVessels')">🩸 Blood Vessels</button>
+<button class="organ-btn" onclick="showOrgan('bloodvessels')">🩸 Blood Vessels</button>
 <button class="organ-btn"
 onclick="showOrgan('thyroid')">🦋 Thyroid</button>
 
@@ -2036,27 +2072,10 @@ diseaseExplorers:[
 "Hypothyroidism Explorer",
 "Hyperthyroidism Explorer",
 "Thyroid Cancer Explorer"
-],
-
-quiz:[
-{
-question:"Which system contains the thyroid gland?",
-options:["Digestive","Endocrine","Respiratory","Urinary"],
-answer:"Endocrine"
-},
-{
-question:"What shape is the thyroid gland?",
-options:["Round","Butterfly","Triangle","Oval"],
-answer:"Butterfly"
-},
-{
-question:"Which hormone therapy treats hypothyroidism?",
-options:["Insulin","Levothyroxine","Aspirin","Penicillin"],
-answer:"Levothyroxine"
-}
 ]
-
 },
+
+
 
 adrenalGlands:{
 
@@ -2137,6 +2156,7 @@ diseaseExplorers:[
 ]
 
 },
+
 
 pancreas: {
 name: "Pancreas",
@@ -2545,6 +2565,9 @@ selectedHotspot = hotspot;
 }
 
 }
+// ======================================================
+//DATE DAY AND TIME JS 
+// ======================================================
 
 function updateClock(){
 
@@ -2775,15 +2798,17 @@ function openhowitworks(){
 window.location.href = "howitworks.html";
 }
 
-
+function openChallenge(){
+    window.location.href = "fronchall.html";
+}
 </script>
-
+<!--NEW QUIZ SECTION -->
 <div id="quizWindow" class="quiz-window">
 
 <h2>🧠 BodyAtlas Quiz</h2>
 
 <p id="progress"></p>
-<p>(the selected answer will not highlight just tap submit button )</p>
+<p>(the selected answer will not highlight just tap submit button ...TRUST ME !!)</p>
 <p id="questionText">Question</p>
 
 <div id="answers"></div>
